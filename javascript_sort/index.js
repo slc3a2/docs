@@ -1,4 +1,4 @@
-// 冒泡排序(bubble sort）
+// 冒泡排序(Bubble sort）
 function bubbleSort(arr) {
   console.time('耗时');
   for(let j = 0; j < arr.length - 1; j++) {
@@ -29,4 +29,14 @@ function selectionSort(arr) {
     [arr[i], arr[minIndex]] = [arr[minIndex], arr[i]] // 使用es6的结构语法交换值，把最小值放到数组最前面
   }
   return arr;
+}
+
+// 插入排序(Insertion Sort)
+function insertionSort(arr){
+  for (let i = 0; i < arr.length; i++) {
+    let t = arr[i];
+    for(let j = i; i > 0; i--){
+
+    }
+  }
 }
