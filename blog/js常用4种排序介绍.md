@@ -141,4 +141,9 @@ function quickSort(arr){
 }  
 ```  
 #### 快速排序动画演示：  
-![quick sort.gif](https://i.loli.net/2020/10/12/DzWckAlLmVU9JuN.gif)  
+![quick sort.gif](https://i.loli.net/2020/10/12/DzWckAlLmVU9JuN.gif)   
+
+<hr>    
+
+本文动画参考：[掘金](https://juejin.im/post/6844903444365443080)    
+本文例子查看：[GitHub](https://github.com/codedance98/docs/tree/main/javascript_sort)
