@@ -48,7 +48,7 @@ justify-content: flex-start(默认值) | flex-end | center | space-between | spa
 **flex-end**： 整体位于容器结尾  
 **center**： 整体位于容器中心  
 **space-between**： 每个`flex item`平均分布在容器内； `第一个item`和`容器开头`，`最后一个item`和`容器结尾`都无间距  
-**space-around**： 每个`flex item`平均分布在容器内， `第一个item`和`容器开头`，`最后一个item`和`容器结尾`的间距为`每个item`间距的一半    
+**space-around**： 每个`flex item`平均分布在容器内， `第一个item`和`容器开头`，`最后一个item`和`容器结尾`的间距都为`每个item`间距的一半    
 
 ### justify-content  
 `justify-content`属性规定所有`flex item`整体在`flex`容器在主轴(默认为水平轴，通过`flex-direcation`设置)上的排列方式
