@@ -50,17 +50,17 @@ justify-content: flex-start(默认值) | flex-end | center | space-between | spa
 **space-between**： 每个`flex item`平均分布在容器内； `第一个item`和`容器开头`，`最后一个item`和`容器结尾`都无间距  
 **space-around**： 每个`flex item`平均分布在容器内， `第一个item`和`容器开头`，`最后一个item`和`容器结尾`的间距都为`每个item`间距的一半    
 
-### justify-content  
-`justify-content`属性规定所有`flex item`整体在`flex`容器在主轴(默认为水平轴，通过`flex-direcation`设置)上的排列方式
+### align-items 
+`align-items`属性规定所有`flex item`整体在`flex`容器在副轴(非主轴，和`justify-content`对应)上的排列方式
 
 ```css  
-justify-content: flex-start(默认值) | flex-end | center | space-between | space-around
+align-items: stretch(默认值) | center | flex-start | flex-end | baseline
 ```  
+**stretch**： 整体占满整个容器的高度
+**center**： 整体位于容器中心  
 **flex-start**： 整体位于容器开头
 **flex-end**： 整体位于容器结尾  
-**center**： 整体位于容器中心  
-**space-between**： 每个`flex item`平均分布在容器内； `第一个item`和`容器开头`，`最后一个item`和`容器结尾`都无间距  
-**space-around**： 每个`flex item`平均分布在容器内， `第一个item`和`容器开头`，`最后一个item`和`容器结尾`的间距为`每个item`间距的一半
+**baseline**： 整体位于`item`中第一行文字基线对齐
 ## flex item属性  
  - order
  - flex-basis
