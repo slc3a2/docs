@@ -56,11 +56,11 @@ justify-content: flex-start(默认值) | flex-end | center | space-between | spa
 ```css  
 align-items: stretch(默认值) | center | flex-start | flex-end | baseline
 ```  
-**stretch**： 整体占满整个容器的高度, 前提必须是你没有设置item的高度(宽度)，否则不生效  
-**center**： 整体位于容器中心   
-**flex-start**： 整体位于容器开头    
-**flex-end**： 整体位于容器结尾  
-**baseline**： 整体位于`item`中第一行文字 *基线* 对齐    
+**stretch**： 整体占满整个主轴的高度, 前提必须是你没有设置item的高度(宽度)，否则不生效  
+**center**： 整体位于主轴中心   
+**flex-start**： 整体位于主轴开头    
+**flex-end**： 整体位于主轴结尾  
+**baseline**： 主轴位于`item`中第一行文字 *基线* 对齐    
 
 > 基线的概念：英文中大概就是一个小写字母 *x* 的最底部，*f* 的中下部；而中文大概就汉字中下部，不太准确，我没深入了解，有兴趣可以网上了解。
    
@@ -80,11 +80,89 @@ align-content: stretch(默认) | center | flex-start | flex-end | space-between 
 ## flex item属性  
  - order
  - flex-basis
- - flex-glow
+ - flex-grow
  - flex-shrink
- - align-shrink
- - align-self    
- 
-## 扩展一道面试题  
+ - align-self  
+
+### order 
+`order `属性规定了当前`flex item`排列前后顺序，越小排列越靠前，可以为负数
+
+```css  
+order: 0(默认值) | <number>  
+```      
+
+### flex-basis  
+`flex-basis `属性规定了当前`flex item`的高度(主轴为水平轴则是高度，如果主轴为竖直轴则是宽度，主轴通过`flex-direction`设置)的伸缩比例或大小
+
+```css  
+flex-basis: auto(默认) | number
+```  
+**number**： 可以是具体的像素值，如30px；也可以是auto大小百分比
   
-持续更新...
+### flex-grow    
+
+`flex-grow`属性 前提在所有项目以`flex-basis`的值排列完如有剩余空间，则规定当前`flex item`的高度(主轴为水平轴则是高度，如果主轴为竖直轴则是宽度，主轴通过`flex-direction`设置)的剩余空间份比例  
+
+```css  
+flex-grow: 0(默认值) | <number>;
+```  
+**number**：当剩余空间足够时，如果值为`1`那么高度(宽度)`放大剩余空间1份`，如果只有一个元素设置了此属性，那么剩余全部全部分给他；如果多个元素设置了此属性，比如`a:1` `b:2` `c:3`则会把剩余空间分成`6份`，a在本身的大小基础上增加剩余空间的`1/6份` a则是`2/6份` c则是`3/6份`，如果剩余空间不足，则取`剩余空间最大值`，不支持负数
+ 
+### flex-shrink    
+
+`flex-shrink`属性规定了当剩余空间不足时候，当前`flex item`的高度(主轴为水平轴则是高度，如果主轴为竖直轴则是宽度，主轴通过`flex-direction`设置)的缩小超出空间份比例，和上面的`flex-grow`是相反的，一个放大，一个缩小
+
+```css  
+flex-shrink: 1(默认值) | <number>;
+``` 
+**number**：当剩余空间不足时，默认按照比例1缩小，如果值为`2`那么高度(宽度)`缩小超出空间2份`
+  
+### align-self     
+
+`flex-shrink`属性规定当前`flex item`作为一个整体在`flex`容器在副轴(非主轴，和`justify-content`相反)上的排列方式    
+
+>注意：这个属性和`align-item`的区别是`align-item`影响全部`flex item`，而`align-self`只影响当前`flex item`  
+
+```css  
+align-self: auto(默认值) | stretch | center | flex-start | flex-end | baseline
+``` 
+**auto**：继承父亲`align-item`的`value`  
+**stretch**： 占满整个主轴的高度, 前提必须是你没有设置item的高度(宽度)，否则不生效  
+**center**： 位于主轴中心   
+**flex-start**： 位于主轴开头    
+**flex-end**： 位于主轴结尾  
+**baseline**： 位于`item`中第一行文字 *基线* 对齐  
+     
+## 扩展一道面试题  
+#### 一个元素包含内部两个元素。当flex水平轴为主轴，实现左固定，右自适应：  
+  
+```html 
+<div class='flex2'>
+	<p>1</p>
+	<p>2</p>
+</div>
+```  
+
+```css
+div.flex2{
+	display:flex;
+	border:1px solid red;
+	width:100%;
+	height:300px;
+}
+.flex2 p{
+	width:100px;
+	height:100px;
+	background-color: skyblue;
+	line-height: 100px;
+	text-align: center;
+	font-size: 80px;
+	border:1px solid blue;
+}
+.flex2 p:nth-child(1){
+	width:200px;// 左侧元素固定为200px宽
+}
+.flex2 p:nth-child(2){
+	flex-grow:1; // 右侧元素自适应
+}
+```
