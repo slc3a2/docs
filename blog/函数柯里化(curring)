@@ -24,7 +24,7 @@ curryingAdd(1)(2, 3, 4) // 10
 
 ```javascript
 function ajax(method, url){
-// 请求的实现...
+// http请求的实现...
 }  
 
 function currying(fun){
