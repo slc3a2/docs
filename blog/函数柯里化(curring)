@@ -16,10 +16,46 @@ curryingAdd(1)(2, 3, 4) // 10
 ```
 
 ## 柯里化的好处  
-看了以上的例子，看起来没什么用，反而实现起来更复杂。实际上这是一种高度抽象编程规范，属于函数式编程的思想，好处为三点：  
+看了以上的例子，看起来没什么用，反而实现起来更复杂。实际上这是一种高度抽象编程规范，属于函数式编程的思想，主要好处为：
    
 - 参数复用
-- 延迟执行
-- 提前确认  
+  
+还有`提前确认`和`延迟执行`好处，其实都是一个意思，个人认为参数复用是最明显的好处，利用好可以写出更优雅的代码，让机器更像人类一步一步实现某件事，一段伪代码来举例：    
+
+```javascript
+function ajax(method, url){
+// 请求的实现...
+}  
+
+function currying(fun){
+// 柯里化实现...
+}
+
+把ajax方法柯里化
+let curryingAjax = currying(ajax);
+
+// 得到一个get请求，只执行一次
+let getAjax = curryingAjax("get");
+
+// 关联业务逻辑，获取用户信息接口
+let getUserInfo = getAjax("http://api.test.com/getUserInfo");
+
+// 关联业务逻辑，获取订单列表接口
+let getOrderList = getAjax("http://api.test.com/getOrderList");
+```  
+
+可以看出`get`传入`curryingAjax`方法仅一次，之后可以调用多次`get`请求。先确定请求方法，在确定具体请求地址，这就实现了参数的复用。如果是post请求：  
+
+```
+let postAjax = curryingAjax("post");
+
+// 之后根据业务逻辑多次调用
+...
+```  
+## 柯里化完整代码  
+
+```javascript 
+
+```
 
 持续更新...
