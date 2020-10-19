@@ -53,9 +53,17 @@ let postAjax = curryingAjax("post");
 ...
 ```  
 ## 柯里化完整代码  
+ - 判断currying的参数第二位到最后一位（也就是args）的长度，如果长度等于fn形参长度，那么直接执行fn，并把args作为参数传入
+ - 如果传入参数（args）不够时，利用递归和闭包，暂存传入的参数，并重新返回currying函数  
 
 ```javascript 
-
+function currying(fn, ...args) {
+  if (args.length >= fn.length) {
+    return fn(...args);
+  } else {
+    return (...args2) => currying(fn, ...args, ...args2);
+  }
+}
 ```
 
 持续更新...
