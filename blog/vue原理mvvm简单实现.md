@@ -1,3 +1,41 @@
+## 代码  
+`index.html`:  
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div id='app'>
+    <input type="text" v-model='v'>
+    {{v}}
+    <button @click='reset'>重置</button>
+  </div>
+  <script src='./index.js'></script>
+  <script>
+    const vm = new Mvvm({
+      el: '#app',
+      data: {
+        v: 'hello world'
+      },
+      methods: {
+        reset() {
+          this.v = '';
+        }
+      }
+    })
+  </script>
+</body>
+</html>
+```    
+
+`index.js`:  
+
+```javascript
 class Mvvm {
   constructor(options) {
     const {el, data, methods} = options;
@@ -117,3 +155,4 @@ class Watcher {
     }
   }
 }
+```
