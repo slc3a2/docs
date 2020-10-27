@@ -1,4 +1,4 @@
-## 代码  
+## index.html 
 `index.html`:  
 
 ```html
@@ -33,7 +33,7 @@
 </html>
 ```    
 
-`index.js`:  
+##index.js  
 
 ```javascript
 class Mvvm {
