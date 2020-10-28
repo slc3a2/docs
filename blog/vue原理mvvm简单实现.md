@@ -33,7 +33,7 @@
 </html>
 ```    
 
-##index.js  
+## index.js  
 
 ```javascript
 class Mvvm {
