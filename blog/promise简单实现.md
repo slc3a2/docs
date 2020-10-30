@@ -44,6 +44,5 @@ new Pro(resolve => {
 }).then((tip)=>{
   console.log(2)
   console.log(tip)
-})sole.log(tip)
 })
 ```
