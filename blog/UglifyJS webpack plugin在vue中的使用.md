@@ -11,7 +11,7 @@
 npm install --save-dev uglifyjs-webpack-plugin
 ```
 #### 使用
-```shell
+```javascript
 // vue.config.js
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 
