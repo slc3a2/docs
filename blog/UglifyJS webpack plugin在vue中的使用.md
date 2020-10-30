@@ -6,11 +6,14 @@
 
 > 一个依赖[ Uglify.js ](https://github.com/mishoo/UglifyJS)来优化和压缩`javascript`代码的`webpack`插件，此插件要求的最小版本为`Node@6.9.0`和`Webpack@4.0.0`版本。  
 
-#### 安装
+#### 安装  
+
 ```shell
 npm install --save-dev uglifyjs-webpack-plugin
-```
-#### 使用
+```  
+
+#### 使用  
+
 ```javascript
 // vue.config.js
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
@@ -32,7 +35,8 @@ module.exports = {
 	      })       
 	 	)
 }
-```
+```  
+
 [更多`compress`参数](http://lisperator.net/uglifyjs/compress)  
 
 [官方参数文档](https://www.html.cn/doc/webpack2/plugins/uglifyjs-webpack-plugin/)
