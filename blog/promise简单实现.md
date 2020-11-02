@@ -6,7 +6,7 @@ class Pro {
   state = 'pending';
   value = null;
   constructor(fn) {
-      // 初始化，把_resolve作为参数传入，等待调用
+      // 初始化，把resolve作为参数传入，等待调用
       fn(this.resolve.bind(this)); 
   }
   // callback为回调，先注册，也就是放入callbacks数组中
@@ -19,7 +19,7 @@ class Pro {
     }
     return this;
   }
-  // _resolve也就是fn的第一次参数，循环执行所有callback
+  // resolve也就是fn的第一次参数，循环执行所有callback
   resolve(value) {
     this.state = 'fulfilled';
     // setTimeout使内部变成异步，在同步执行完最后执行这里，处理fn是同步的情况下then中的回调函数已经注册，然后在这里去执行，不会出现callbacks是空数组的情况
