@@ -15,7 +15,7 @@ webpack配置，由于`vue-cli@2`以后隐藏`webpack.config.js`，也就是webp
 如果您想修改，你需要在vue根目录创建`vue.config.js`文件，像css一样，会自动覆盖隐藏的基础配置。gizp配置如下:  
 [更多参数](https://www.webpackjs.com/plugins/compression-webpack-plugin/)
 
-```shell
+```javascript
 // vue.config.js
 const CompressionWebpackPlugin = require('compression-webpack-plugin'); 
 const isProduction = process.env.NODE_ENV === 'production'; // 环境判断
@@ -43,7 +43,7 @@ module.exports = {
 > 
 > 如果你要安装2+版本到`/build/webpack.prod.conf.js`中`new CompressionWebpackPlugin`的第一个参数从`asset`修改成`filename`。
 
-```shell
+```javascript
 // 安装依赖
 npm install compression-webpack-plugin@1.1.9 --save-dev
 

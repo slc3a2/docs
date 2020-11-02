@@ -89,7 +89,7 @@ webpack ./entry/js/index.js --output ./output/js/main.js
 
 `webpack.conf.js`：  
 
-```shell 
+```javascript 
 const path = require('path')
 
 // 引入path为了实现相对路径转换成绝对路径：
@@ -128,7 +128,7 @@ package.json：
 
 `/src/index.css `： 
 
-```javascript
+```css
 h1{
   color:red;
 }
@@ -246,7 +246,7 @@ npm install html-webpack-plugin --save-dev
 ```
 `webpack.config.js`配置：  
 
-```shell
+```javascript
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 
 module.exports = {
@@ -269,7 +269,7 @@ npm install clean-webpack-plugin --save-dev
 
 `webpack.config.js`配置：   
 
-```shell
+```javascript
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 
 module.exports = {
