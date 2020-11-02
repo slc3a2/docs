@@ -11,11 +11,11 @@
 ## flex容器属性    
 > 设置一个盒子为`flex`容器，首先设置`display: flex`;  
 
- - flex-direction
- - flex-wrap
- - justify-content
- - align-items
- - align-content  
+ - **flex-direction**
+ - **flex-wrap**
+ - **justify-content**
+ - **align-items**
+ - **align-content**  
  
 ### flex-direction   
 `flex-direction`属性规定所有`flex item`在`flex`容器从 **第一个元素** 开始的排列方式
