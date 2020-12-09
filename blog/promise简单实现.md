@@ -54,12 +54,13 @@ Promise.prototype.all = function(promises) {
   let promiseCount = 0;
   let promisesLength = promises.length;
   return new Promise(function(resolve, reject) {
-    for (let val of promises) {
-      Promise.resolve(val).then(function(res) {
+    for (let item of promises) {
+      // 执行每个item
+      Promise.resolve(item).then(function(res) {
         promiseCount++;
-        // results.push(res);
+        // 按照顺序插入结果
         results[i] = res;
-        // 当所有函数都正确执行了，resolve输出所有返回结果。
+        // 如果全部执行成功，返回成功
         if (promiseCount === promisesLength) {
           return resolve(results);
         }
