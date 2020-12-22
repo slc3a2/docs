@@ -71,7 +71,7 @@ Promise.prototype.all = function(promises) {
   });
 };
 ```
-## promise.rase 实现
+## promise.race 实现
 ```javascript
 Promise.prototype.race = function(promises) {
   return new Promise((resolve,reject) => {
