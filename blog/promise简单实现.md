@@ -71,3 +71,17 @@ Promise.prototype.all = function(promises) {
   });
 };
 ```
+## promise.rase 实现
+```javascript
+Promise.prototype.race = function(promises) {
+  return new Promise((resolve,reject) => {
+    for(let item of promises) {
+      Promise.resolve(item).then((res)=> {
+        return resolve(res)
+      }).catch((err)=> {
+        return reject(err)
+      })
+    }
+   })
+};
+```
