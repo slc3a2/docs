@@ -147,4 +147,4 @@ updateChildren (parentElm, oldCh, newCh) { // parentElm：真是dom节点。oldC
  	- 2: 如果存在文本节点，直接用新vnode内文本替换旧vnode文本
  	- 3: 判断子节点，如果新vnode有，旧vnode没有，则直接把新vnode的子节点加入到真实dom，相反就删除掉真实dom子节点
  	- 4. 如果都有子节点，且不同，调用updateChildren，详细对比
- - **updateChildren**： 从两边向中间收拢循环两个新旧vnode的每个子节点，以此对比，头头，尾尾，头尾，尾头。如果这四种比对调用sameVnode，得到true，证明值得对比，那么就调用第二步骤的`patchVnode`递归继续比，除了这四种情况。如果有key，则会对比key。否则直接替换新元素到真实dom
+ - **调用updateChildren**： 从两边向中间收拢循环两个新旧vnode的每个子节点，以此对比，头头，尾尾，头尾，尾头。如果这四种比对调用sameVnode，得到true，证明值得对比，那么就调用第二步骤的`patchVnode`递归继续比，除了这四种情况。如果有key，则会对比key。否则直接替换新元素到真实dom。
