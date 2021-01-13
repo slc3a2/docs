@@ -187,7 +187,7 @@
 // console.log(compareVersion('1.0', '1.0.0'));
 // console.log(compareVersion('0.1', '1.1'));
 
-// 1. 两数之和 ✅
+// 1. 两数之和 ✅ 暴力求解
 // var twoSum = function(nums, target) {
 //   let temp = [];
 //   for(let i = 0; i < nums.length; i++){
@@ -206,4 +206,50 @@
 // twoSum([2,7,11,15], 9)
 // twoSum([3,2,4], 6)
 // twoSum([3,3], 6)
+
+
+// 1. 两数之和 ✅ 哈希表
+// var twoSum = function(nums, target) {
+//   let map = new Map();
+//   for(let i = 0; i < nums.length; i++) {
+//     map.set(nums[i], i)
+//   }
+
+//   for(let i = 0; i < nums.length; i++) {
+//     map.set(nums[i], i)
+//     let temp = target - nums[i];
+//     if(map.get(temp) && map.get(temp) !== i){
+//       return [map.get(temp), i];
+//     }
+//   }
+// };
+
+// twoSum([2,7,11,15], 9)
+// twoSum([3,2,4], 6)
+// twoSum([3,3], 6)
+
+
+// 9. 回文数 ✅  头尾比较
+// var isPalindrome = function(x) {
+//   let t = String(x).split('')
+//   for(let i = 0; i < t.length; i++) {
+//     if(t[i] !== t[t.length - 1 - i]){
+//       return false;
+//     }
+//   }
+//   return true;
+// };
+
+// isPalindrome(121);
+// isPalindrome(-121);
+
+
+// 9. 回文数 ✅  反转比较
+// var isPalindrome = function(x) {
+//   return String(x).split('').reverse().join('') === String(x)
+// };
+
+// isPalindrome(121);
+// isPalindrome(-121);
+
 
