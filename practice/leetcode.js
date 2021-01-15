@@ -288,21 +288,26 @@
 
 // 3. 无重复字符的最长子串
 var lengthOfLongestSubstring = function(s) {
+  if(s.length === '' || s.length === ' ') {
+    return 0;
+  }
   let _s = '';
-  for(let i = 0; i < s.length; i++){
+  let resultArr = [];
+  for(let i = 0; i < s.length; i++) {
     _s  = _s + s[i];
-    for(let j = i; j < s.length; j++){
-      if(_s[0] === s[j] ){
-        _s = s[j]
-      }else{
-      }
+    if(_s.indexOf(s[i+1]) !== -1) {
+      resultArr.push(_s)
+      _s = '';
     }
   }
-  console.log(_s);
-  console.log(_s.length);
-  return _s.length;
+  let maxItem = resultArr.reduce((a, b)=> {
+    return a.length > b.length ? a: b;
+  })
+  console.log(maxItem.length)
+  return maxItem.length;
 };
 
 lengthOfLongestSubstring('abcabcbb')
 lengthOfLongestSubstring('bbbbb')
 lengthOfLongestSubstring('pwwkew')
+lengthOfLongestSubstring("abcabcbb")
