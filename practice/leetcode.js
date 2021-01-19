@@ -286,28 +286,50 @@
 // canPermutePalindrome('aaa');
 
 
-// 3. 无重复字符的最长子串
-var lengthOfLongestSubstring = function(s) {
-  if(s.length === '' || s.length === ' ') {
-    return 0;
+// 3. 无重复字符的最长子串 ❌
+// var lengthOfLongestSubstring = function(s) {
+//   if(s.length === 1){
+//     return 1;
+//   }
+//   let _s = '';
+//   let resultArr = [];
+//   for(let i = 0; i < s.length; i++) {
+//     _s  = _s + s[i];
+//     console.log(_s, s[i+1])
+//     if(_s.indexOf(s[i+1]) === -1) {
+//       resultArr.push(_s)
+//       _s = '';
+//     }
+//   }
+//   console.log(resultArr)
+//   let maxItem = resultArr.reduce((a, b)=> {
+//     return a.length > b.length ? a: b;
+//   }, [])
+//   return maxItem.length;
+// };
+
+// // lengthOfLongestSubstring('abcabcbb')
+// // lengthOfLongestSubstring('bbbbb')
+// // lengthOfLongestSubstring('pwwkew')
+// // lengthOfLongestSubstring("abcabcbb")
+// console.log(lengthOfLongestSubstring(""))
+// console.log(lengthOfLongestSubstring(" "))
+// console.log(lengthOfLongestSubstring("au"))
+
+// 7. 整数反转 ✅ 
+var reverse = function(x) {
+  let res = 0;
+  while(x !== 0){
+    res = res * 10 + x % 10;
+    x = parseInt(x / 10)
   }
-  let _s = '';
-  let resultArr = [];
-  for(let i = 0; i < s.length; i++) {
-    _s  = _s + s[i];
-    if(_s.indexOf(s[i+1]) !== -1) {
-      resultArr.push(_s)
-      _s = '';
-    }
+  if(res > (Math.pow(2, 31) - 1) || res < -(Math.pow(2, 31))) {
+    res = 0;
   }
-  let maxItem = resultArr.reduce((a, b)=> {
-    return a.length > b.length ? a: b;
-  })
-  console.log(maxItem.length)
-  return maxItem.length;
+  return res;
 };
 
-lengthOfLongestSubstring('abcabcbb')
-lengthOfLongestSubstring('bbbbb')
-lengthOfLongestSubstring('pwwkew')
-lengthOfLongestSubstring("abcabcbb")
+reverse(123)
+reverse(-123)
+reverse(120)
+reverse(0)
