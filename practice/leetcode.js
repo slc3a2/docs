@@ -334,16 +334,100 @@
 // reverse(120)
 // reverse(0)
 
-var thousandSeparator = function(n) {
-  let temp = String(n);
-  let res;
-  for(let i = temp.length - 3; i === 0; i--){
-    console.log(i)
-    // res = temp.slice(0, i) + '.' + temp.slice(i);
-  }
-  // console.log(res)
-  return res;
-};
+//1556. 千位分隔数 ✅ 
+// var thousandSeparator = function(n) {
+//   let temp = String(n);
+//   let res = temp;
+//   let i = temp.length - 3;
+//   while(i > 0) {
+//     res = res.slice(0, i) + '.' + res.slice(i)
+//     i -= 3;
+//   }
+//   return res;
+// };
 
-// thousandSeparator(987)
-thousandSeparator(12345678)
+// // thousandSeparator(987)
+// thousandSeparator(12345678)
+
+//   async function async1 () {
+//     console.log('async1 start')
+//     await async2(); console.log('async1 end')
+//   }
+//   async function async2() {
+//     console.log('async2')
+//   }
+//   console.log('script start')
+//   setTimeout(function () {
+//     console.log('setTimeout')
+//   }, 0)
+//   async1()
+//   new Promise(function (resolve) {
+//     console.log('promise1')
+//     resolve()
+//   }).then(function () {
+//     console.log('promise2')
+//   })
+//   console.log('script end')
+
+//   // script start
+//   // async1 start
+//   // promise1
+//   // script end
+//   // async2
+//   // async1 end
+//   // promise2
+//   // setTimeout
+
+
+
+//   // async2
+//   // script end
+//   // promise1
+//   // promise2
+// //   let data = [
+// //     {
+// //       id: 1,
+// //       title: "课程1",
+// //       children: [
+// //         { id: 4, title: "课程1-1" },
+// //         {
+// //           id: 5,
+// //           title: "课程1-2",
+// //           children: [
+// //             { id: 6, title: "课程1-2-1" },
+// //             { id: 7, title: "课程1-2-2" },
+// //           ],
+// //         },
+// //       ],
+// //     },
+// //     { id: 2, title: "课程2" },
+// //     { id: 3, title: "课程3" },
+// //   ];
+
+// function flat(_data) {
+//   let res = []
+//   for(let i = 0; i < _data.length; i++) {
+//     res.push({
+//       id: _data[i].id,
+//       title: _data[i].title
+//     })
+//     if(_data[i].hasOwnProperty('children') && Array.isArray(_data[i].children)) {
+//       res = res.concat(flat(_data[i].children));
+//     }
+//   }
+//   return res
+// }
+
+// // console.log(flat(data))
+
+
+// function debounce(f, delay) {
+//   let timer = null;
+//   return function (...args) {
+//     clearTimeout(timer);
+//     timer = setTimeout(() => {
+//       f.apply(this, args);
+//     }, delay);
+//   };
+// }
+
