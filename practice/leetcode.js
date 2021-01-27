@@ -288,33 +288,26 @@
 
 // 3. 无重复字符的最长子串 ❌
 // var lengthOfLongestSubstring = function(s) {
-//   if(s.length === 1){
-//     return 1;
-//   }
-//   let _s = '';
-//   let resultArr = [];
+//   let arr = [];
+//   let max = 0;
 //   for(let i = 0; i < s.length; i++) {
-//     _s  = _s + s[i];
-//     console.log(_s, s[i+1])
-//     if(_s.indexOf(s[i+1]) === -1) {
-//       resultArr.push(_s)
-//       _s = '';
-//     }
+//       if(arr.indexOf(s[i]) !== -1){
+//         arr.splice(0, arr.indexOf(s[i])+1);
+//       }
+//       arr.push(s.charAt(i))
+//       max = Math.max(arr.length, max) 
 //   }
-//   console.log(resultArr)
-//   let maxItem = resultArr.reduce((a, b)=> {
-//     return a.length > b.length ? a: b;
-//   }, [])
-//   return maxItem.length;
+//   console.log(max)
+//   return max
 // };
-
-// // lengthOfLongestSubstring('abcabcbb')
-// // lengthOfLongestSubstring('bbbbb')
-// // lengthOfLongestSubstring('pwwkew')
-// // lengthOfLongestSubstring("abcabcbb")
-// console.log(lengthOfLongestSubstring(""))
-// console.log(lengthOfLongestSubstring(" "))
-// console.log(lengthOfLongestSubstring("au"))
+// lengthOfLongestSubstring('abcabcbb')
+// lengthOfLongestSubstring('bbbbb')
+// lengthOfLongestSubstring('pwwkew')
+// lengthOfLongestSubstring("abcabcbb")
+// lengthOfLongestSubstring("")
+// lengthOfLongestSubstring(" ")
+// lengthOfLongestSubstring("au")
+// lengthOfLongestSubstring("aab")
 
 // 7. 整数反转 ✅ 
 // var reverse = function(x) {
