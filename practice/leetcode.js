@@ -342,85 +342,38 @@
 // // thousandSeparator(987)
 // thousandSeparator(12345678)
 
-//   async function async1 () {
-//     console.log('async1 start')
-//     await async2(); console.log('async1 end')
-//   }
-//   async function async2() {
-//     console.log('async2')
-//   }
-//   console.log('script start')
-//   setTimeout(function () {
-//     console.log('setTimeout')
-//   }, 0)
-//   async1()
-//   new Promise(function (resolve) {
-//     console.log('promise1')
-//     resolve()
-//   }).then(function () {
-//     console.log('promise2')
-//   })
-//   console.log('script end')
+// 13. 罗马数字转整数
+var romanToInt = function(s) {
+  let map = {
+    'I': 1,
+    'V': 5,
+    'X': 10,
+    'L': 50,
+    'C': 100,
+    'D': 500,
+    'M': 1000
+  }
+  let arr = [];
+  for(let i = 0; i < s.length; i++) {
+    let num = map[s[i]];
+    let temp = arr.pop() || 0;
+    console.log(temp, num);
+    let temp1
+    if(temp <= num) {
+      temp1 = num - temp;
+      // arr.push(num - temp)
+    } else {
+      temp1 = num + temp;
+      // arr.push(num + temp)
+    }
+    console.log(temp1)
+    arr.push(temp1)
+  }
+  console.log(arr)
+}
 
-//   // script start
-//   // async1 start
-//   // promise1
-//   // script end
-//   // async2
-//   // async1 end
-//   // promise2
-//   // setTimeout
-
-
-
-//   // async2
-//   // script end
-//   // promise1
-//   // promise2
-// //   let data = [
-// //     {
-// //       id: 1,
-// //       title: "课程1",
-// //       children: [
-// //         { id: 4, title: "课程1-1" },
-// //         {
-// //           id: 5,
-// //           title: "课程1-2",
-// //           children: [
-// //             { id: 6, title: "课程1-2-1" },
-// //             { id: 7, title: "课程1-2-2" },
-// //           ],
-// //         },
-// //       ],
-// //     },
-// //     { id: 2, title: "课程2" },
-// //     { id: 3, title: "课程3" },
-// //   ];
-
-// function flat(_data) {
-//   let res = []
-//   for(let i = 0; i < _data.length; i++) {
-//     res.push({
-//       id: _data[i].id,
-//       title: _data[i].title
-//     })
-//     if(_data[i].hasOwnProperty('children') && Array.isArray(_data[i].children)) {
-//       res = res.concat(flat(_data[i].children));
-//     }
-//   }
-//   return res
-// }
-
-// // console.log(flat(data))
-
-
-// function debounce(f, delay) {
-//   let timer = null;
-//   return function (...args) {
-//     clearTimeout(timer);
-//     timer = setTimeout(() => {
-//       f.apply(this, args);
-//     }, delay);
-//   };
-// }
-
+// romanToInt('III')
+// romanToInt('IV')
+// romanToInt('IX')
+// romanToInt('LVIII')
+romanToInt('MCMXCIV')
