@@ -342,38 +342,51 @@
 // // thousandSeparator(987)
 // thousandSeparator(12345678)
 
-// 13. 罗马数字转整数
-var romanToInt = function(s) {
-  let map = {
-    'I': 1,
-    'V': 5,
-    'X': 10,
-    'L': 50,
-    'C': 100,
-    'D': 500,
-    'M': 1000
-  }
-  let arr = [];
-  for(let i = 0; i < s.length; i++) {
-    let num = map[s[i]];
-    let temp = arr.pop() || 0;
-    console.log(temp, num);
-    let temp1
-    if(temp <= num) {
-      temp1 = num - temp;
-      // arr.push(num - temp)
-    } else {
-      temp1 = num + temp;
-      // arr.push(num + temp)
-    }
-    console.log(temp1)
-    arr.push(temp1)
-  }
-  console.log(arr)
-}
+// 13. 罗马数字转整数 ✅
+// var romanToInt = function(s) {
+//   let map = new Map(Object.entries({
+//     'I': 1,
+//     'V': 5,
+//     'X': 10,
+//     'L': 50,
+//     'C': 100,
+//     'D': 500,
+//     'M': 1000,
+//     'IV': 4,
+//     'IX': 9,
+//     'XL': 40,
+//     'XC': 90,
+//     'CD': 400,
+//     'CM': 900
+//   }))
+//   let count = 0;
+//   for(let i = 0; i < s.length; i++) {
+//     if(map.has(s[i] + s[i+1])) {
+//       count += map.get(s[i] + s[i+1])
+//       i++;
+//     } else {
+//       count += map.get(s[i])
+//     }
+//   }
+//   return count;
+// }
 
-// romanToInt('III')
-// romanToInt('IV')
-// romanToInt('IX')
-// romanToInt('LVIII')
-romanToInt('MCMXCIV')
+// romanToInt('MCMXCIV')
+
+// 4. 寻找两个正序数组的中位数
+
+var findMedianSortedArrays = function(nums1, nums2) {
+  let temp = nums1.concat(nums2).sort((a, b)=> {return a > b});
+  console.log(temp)
+  if(temp.length % 2 === 1) {
+    return temp[temp.length / 2 - 0.5]
+  } else {
+    console.log()
+    let prev = temp[temp.length / 2 - 1];
+    let next = temp[temp.length / 2];
+    return (prev + next) / 2
+  }
+};
+
+nums1 = [1, 3], nums2 = [2]
+console.log(findMedianSortedArrays(nums1, nums2))
