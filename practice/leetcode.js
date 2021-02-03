@@ -373,20 +373,49 @@
 
 // romanToInt('MCMXCIV')
 
-// 4. 寻找两个正序数组的中位数
+// 4. 寻找两个正序数组的中位数 ❌ leetcode[1,3] [2]用例和本地结果不同
+// var findMedianSortedArrays = function(nums1, nums2) {
+//   let temp = nums1.concat(nums2).sort((a, b)=> {return a > b});
+//   console.log(temp)
+//   if(temp.length % 2 === 1) {
+//     return temp[temp.length / 2 - 0.5]
+//   } else {
+//     let prev = temp[temp.length / 2 - 1];
+//     let next = temp[temp.length / 2];
+//     return (prev + next) / 2
+//   }
+// };
 
-var findMedianSortedArrays = function(nums1, nums2) {
-  let temp = nums1.concat(nums2).sort((a, b)=> {return a > b});
-  console.log(temp)
-  if(temp.length % 2 === 1) {
-    return temp[temp.length / 2 - 0.5]
-  } else {
-    console.log()
-    let prev = temp[temp.length / 2 - 1];
-    let next = temp[temp.length / 2];
-    return (prev + next) / 2
+// nums1 = [1, 3], nums2 = [2]
+// console.log(findMedianSortedArrays(nums1, nums2))
+
+// 14. 最长公共前缀
+var longestCommonPrefix = function(strs) {
+  if(strs.length === 0 || (strs.length === 1 && strs[0] === '')){
+    return ''
   }
-};
-
-nums1 = [1, 3], nums2 = [2]
-console.log(findMedianSortedArrays(nums1, nums2))
+  let resStr = '';
+  let maxItem = strs.reduce((a, b)=> {
+    return a.length > b.length ? a : b;
+  }, ['', ''])
+  console.log(maxItem)
+  for(let i = 0; i < maxItem.length; i++) {
+    let product = maxItem.charAt(i);
+    let count = 0;
+    // console.log(product)
+    for(let j = 0; j < strs.length; j++) {
+      // console.log(product, strs[j][i])
+      if(strs[j][i] === product) {
+        count++;
+      }
+    }
+    if(count === strs.length) {
+      resStr = resStr + product;
+    }
+  }
+  console.log(resStr)
+  return resStr;
+}
+longestCommonPrefix(["flower","flow","flight"])
+longestCommonPrefix(["dog","racecar","car"])
+longestCommonPrefix(["dog","racecar","car"])
