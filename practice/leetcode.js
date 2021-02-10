@@ -389,42 +389,44 @@
 // nums1 = [1, 3], nums2 = [2]
 // console.log(findMedianSortedArrays(nums1, nums2))
 
-// 14. 最长公共前缀
-var longestCommonPrefix = function(strs) {
-  let resStr = '';
-  let maxItem = strs.reduce((a, b)=> {
-    return a.length > b.length ? a : b;
-  }, [''])
-  // console.log(maxItem)
-  // console.log(maxItem.length)
-  if(maxItem.length === 1 && maxItem[0] === '') {
-    return ''
-  }
-  console.log(maxItem)
-  for(let i = 0; i < maxItem.length; i++) {
-    console.log('------')
-    let product = maxItem.charAt(i);
-    let count = 0;
-    // console.log(product)
-    for(let j = 0; j < strs.length; j++) {
-      // console.log(product, strs[j][i])
-      console.log(strs[j][i], product)
-      if(strs[j][i] === product) {
-        count++;
-      }
-    }
-    if(count === strs.length) {
-      resStr = resStr + product;
-    }
-  }
-  console.log(resStr)
-  return resStr;
-}
-// longestCommonPrefix(["flower","flow","flight"])
-// longestCommonPrefix(["dog","racecar","car"])
-// longestCommonPrefix(["dog","racecar","car"])
-// longestCommonPrefix([""])
-// longestCommonPrefix([])
-// longestCommonPrefix(['a'])
-// longestCommonPrefix(['',''])
-longestCommonPrefix(["cir","car"])
+// 14. 最长公共前缀 ❌
+// var longestCommonPrefix = function(strs) {
+//   let resStr = '';
+//   let maxItem = strs.reduce((a, b)=> {
+//     return a.length > b.length ? a : b;
+//   }, [''])
+//   // console.log(maxItem)
+//   // console.log(maxItem.length)
+//   if(maxItem.length === 1 && maxItem[0] === '') {
+//     return ''
+//   }
+//   console.log(maxItem)
+//   for(let i = 0; i < maxItem.length; i++) {
+//     console.log('------')
+//     let product = maxItem.charAt(i);
+//     let count = 0;
+//     // console.log(product)
+//     for(let j = 0; j < strs.length; j++) {
+//       // console.log(product, strs[j][i])
+//       console.log(strs[j][i], product)
+//       if(strs[j][i] === product) {
+//         count++;
+//       }
+//     }
+//     if(count === strs.length) {
+//       resStr = resStr + product;
+//     }
+//   }
+//   console.log(resStr)
+//   return resStr;
+// }
+// // longestCommonPrefix(["flower","flow","flight"])
+// // longestCommonPrefix(["dog","racecar","car"])
+// // longestCommonPrefix(["dog","racecar","car"])
+// // longestCommonPrefix([""])
+// // longestCommonPrefix([])
+// // longestCommonPrefix(['a'])
+// // longestCommonPrefix(['',''])
+// longestCommonPrefix(["cir","car"])
+
+// 汉诺塔
