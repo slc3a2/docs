@@ -430,3 +430,25 @@
 // longestCommonPrefix(["cir","car"])
 
 // 汉诺塔
+// 42. 接雨水
+// 找到数组最高节点，以此向左右节点遍历，如果下一个节点值比当前节点值小，那么说明下一个节点可以接到水, 执行接水方法，然后递归这个方法，只到满为止
+var trap = function(height) {
+  let maxItem = Math.max(...height);
+  let maxIdx = height.indexOf(maxItem);
+  let left_mark = 0;
+  let left_mark_idx = 0;
+  let right_mark = 0;
+  let right_mark_idx = 0;
+  // 左遍历
+  for(let i = 0; i < maxIdx; i++) {
+    if(height[i] <= left_mark) {
+      left_mark = height[i]
+      left_mark_idx = i;
+    }
+  }
+  // 左遍历
+  for(let i = maxIdx; i === 0; i--) {
+
+  }
+  
+};
