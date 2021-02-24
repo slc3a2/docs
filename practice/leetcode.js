@@ -458,3 +458,36 @@
 //   }
   
 // };
+let l1 = {
+  val: 2,
+  next:  {
+    val: 4,
+    next: {
+      val: 3,
+      next: null
+    }
+  }
+}
+
+let l2 = {
+  val: 5,
+  next:  {
+    val: 6,
+    next: {
+      val: 4,
+      next: null
+    }
+  }
+}
+// 2. 两数相加
+var addTwoNumbers = function(l1, l2) {
+  function toLinked(arr) {
+    let temp = {};
+    for(let i = 0; i < arr.length; i++) {
+      if(temp.next === null) {
+        temp = temp.next;
+      };
+      temp.val
+    }
+  }
+};
