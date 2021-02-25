@@ -438,56 +438,92 @@
 
 // 42. 接雨水
 // 找到数组最高节点，以此向左右节点遍历，如果下一个节点值比当前节点值小，那么说明下一个节点可以接到水, 执行接水方法，然后递归这个方法，只到满为止
-// var trap = function(height) {
-//   let maxItem = Math.max(...height);
-//   let maxIdx = height.indexOf(maxItem);
-//   let left_mark = 0;
-//   let left_mark_idx = 0;
-//   let right_mark = 0;
-//   let right_mark_idx = 0;
-//   // 左遍历
-//   for(let i = 0; i < maxIdx; i++) {
-//     if(height[i] <= left_mark) {
-//       left_mark = height[i]
-//       left_mark_idx = i;
+var trap = function(height) {
+  let count = 0;
+  for(let i = 0; i < height.length; i++) {
+    let item = height[i];
+    let left, right;
+    for(let j = i; j >= 0; j--) {
+      if(height[j] > item) {
+        left = height[j]
+        break;
+      }
+    }
+    for(let l = i; l < height.length; l++) {
+      if(height[l] > item) {
+        right = height[l]
+        break;
+      }
+    }
+    // console.log(left, item, right)
+    if(typeof(right) !== 'undefined' && typeof(left) !== 'undefined' && typeof(item) !== 'undefined') {
+      // console.log('符合条件进入判断')
+      let temp = 0;
+      if(left > right) {
+        temp = left - right
+      } else if(left < right) {
+        temp = right - left;
+      } else {
+        temp = right - item;
+      }
+      if(temp !== 0) {
+        console.log(height.indexOf(left), height.indexOf(right))
+        for(let ii = height.indexOf(left)+1; ii < height.indexOf(right); ii++) {
+          count += temp - height[ii];
+          // let temp1 = height[ii];
+          // console.log(ii)
+          // height[ii] += temp
+          // // console.log(height[ii], temp1)
+          // count += height[ii] - temp1;
+          // console.log('---')
+        }
+      }
+    }
+  }
+  console.log(count)
+  console.log(height)
+};
+
+// trap([4,3,2,1,2,3,4])
+trap([0,1,0,2,1,0,1,3,2,1,2,1])
+
+
+
+
+
+
+
+
+// let l1 = {
+//   val: 2,
+//   next:  {
+//     val: 4,
+//     next: {
+//       val: 3,
+//       next: null
 //     }
 //   }
-//   // 左遍历
-//   for(let i = maxIdx; i === 0; i--) {
+// }
 
+// let l2 = {
+//   val: 5,
+//   next:  {
+//     val: 6,
+//     next: {
+//       val: 4,
+//       next: null
+//     }
 //   }
-  
+// }
+// // 2. 两数相加
+// var addTwoNumbers = function(l1, l2) {
+//   function toLinked(arr) {
+//     let temp = {};
+//     for(let i = 0; i < arr.length; i++) {
+//       if(temp.next === null) {
+//         temp = temp.next;
+//       };
+//       temp.val
+//     }
+//   }
 // };
-let l1 = {
-  val: 2,
-  next:  {
-    val: 4,
-    next: {
-      val: 3,
-      next: null
-    }
-  }
-}
-
-let l2 = {
-  val: 5,
-  next:  {
-    val: 6,
-    next: {
-      val: 4,
-      next: null
-    }
-  }
-}
-// 2. 两数相加
-var addTwoNumbers = function(l1, l2) {
-  function toLinked(arr) {
-    let temp = {};
-    for(let i = 0; i < arr.length; i++) {
-      if(temp.next === null) {
-        temp = temp.next;
-      };
-      temp.val
-    }
-  }
-};
