@@ -435,60 +435,53 @@
 //     if()
 //   }
 // };
-
-// 42. 接雨水
+ 
+// 42. 接雨水 ✅
 // 从左边第一个节点开始遍历，分别找到符合条件的他的前一项和后一项，要求是满足:前一项 > 当前值 < 后一项，如不满足，前一项继续向前移动一位，后一项向后移动一位，
 // 如果有符合条件的组合下：如果left值大于right值，所有在left和right之间的值需要等于right的值，否则left和right之间的值都等于left的值，然后每次变化，用count去记录，最后返回count，count为结果
-var trap = function(height) {
-  let basic = JSON.parse(JSON.stringify(height));
-  let count = 0;
-  for(let i = 0; i < height.length; i++) {
-    let item = height[i];
-    let left, right;
-    let startIdx, endIdx
-    for(let j = i; j >= 0; j--) {
-      if(height[j] > item) {
-        left = height[j]
-        startIdx = j;
-        break;
-      }
-    }
-    for(let l = i; l < height.length; l++) {
-      if(height[l] > item) {
-        right = height[l]
-        endIdx = l;
-        break;
-      }
-    }
-    if(typeof(right) !== 'undefined' && typeof(left) !== 'undefined' && typeof(item) !== 'undefined') {
-      let temp = 0;
-      if(left > right) {
-        temp = right;
-      } else {
-        temp = left;
-      }
-      if(temp !== 0) {
-        for(let ii = startIdx+1; ii < endIdx; ii++) {
-          count += temp - height[ii];
-          height[ii] = temp;
-        }
-      }
-    }
-  }
-  console.log(`柱子排列为:${basic} 的情况下，这样结构最大可接${count}滴雨水，接满水后的结构为: ${height}`)
-  return count;
-};
+// var trap = function(height) {
+//   let basic = JSON.parse(JSON.stringify(height));
+//   let count = 0;
+//   for(let i = 0; i < height.length; i++) {
+//     let item = height[i];
+//     let left, right;
+//     let startIdx, endIdx
+//     for(let j = i; j >= 0; j--) {
+//       if(height[j] > item) {
+//         left = height[j]
+//         startIdx = j;
+//         break;
+//       }
+//     }
+//     for(let l = i; l < height.length; l++) {
+//       if(height[l] > item) {
+//         right = height[l]
+//         endIdx = l;
+//         break;
+//       }
+//     }
+//     if(typeof(right) !== 'undefined' && typeof(left) !== 'undefined' && typeof(item) !== 'undefined') {
+//       let temp = 0;
+//       if(left > right) {
+//         temp = right;
+//       } else {
+//         temp = left;
+//       }
+//       if(temp !== 0) {
+//         for(let ii = startIdx+1; ii < endIdx; ii++) {
+//           count += temp - height[ii];
+//           height[ii] = temp;
+//         }
+//       }
+//     }
+//   }
+//   console.log(`柱子排列为:${basic} 的情况下，这样结构最大可接${count}滴雨水，接满水后的结构为: ${height}`)
+//   return count;
+// };
 
-trap([4,3,2,1,2,3,4])
-trap([1,2,3,4,5,2,3,1,2,3,4,5,5])
-trap([0,1,0,2,1,0,1,3,2,1,2,1])
-
-
-
-
-
-
-
+// trap([4,3,2,1,2,3,4])
+// trap([1,2,3,4,5,2,3,1,2,3,4,5,5])
+// trap([0,1,0,2,1,0,1,3,2,1,2,1])
 
 // let l1 = {
 //   val: 2,
@@ -511,7 +504,7 @@ trap([0,1,0,2,1,0,1,3,2,1,2,1])
 //     }
 //   }
 // }
-// // 2. 两数相加
+// // 2. 两数相加 ❌
 // var addTwoNumbers = function(l1, l2) {
 //   function toLinked(arr) {
 //     let temp = {};
@@ -523,3 +516,37 @@ trap([0,1,0,2,1,0,1,3,2,1,2,1])
 //     }
 //   }
 // };
+
+//303. 区域和检索 - 数组不可变  ✅
+// var NumArray = function(nums) {
+//   this.value = nums;
+// };
+
+// NumArray.prototype.sumRange = function(i, j) {
+//   let temp = 0;
+//   for(let l = i; l <= j; l++) {
+//     temp += this.value[l];
+//   }
+//   return temp;
+// };
+
+// let temp = new NumArray([-2, 0, 3, -5, 2, -1]);
+// let result = temp.sumRange(0, 2);
+// console.log(result)
+
+// 11. 盛最多水的容器  ✅
+// var maxArea = function(height) {
+//   let len = height.length;
+//   let mark = 0;
+//   for(let i = 0; i < len; i++) {
+//     for(let j = i + 1; j < len; j++) {
+//       let x = (j+1) - (i+1);
+//       let y = height[i] > height[j] ? height[j] : height[i];
+//       x*y > mark ? mark = x*y : null;
+//     }
+//   }
+//   return mark;
+// };
+
+// maxArea([4,3,2,1,4])
+// maxArea([1,8,6,2,5,4,8,3,7])
