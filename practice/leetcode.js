@@ -581,16 +581,47 @@
 // let num1 = "123"; let num2 = "456";
 // multiply(num1, num2)
 
-// 26. 删除排序数组中的重复项
-var removeDuplicates = function(nums) {
-  for(let i = 0; i < nums.length - 1; i++) {
-    if(nums[i] === nums[i+1]) {
-      nums.splice(i,1)
-      i--;
+// 26. 删除排序数组中的重复项 ✅
+// var removeDuplicates = function(nums) {
+//   for(let i = 0; i < nums.length - 1; i++) {
+//     if(nums[i] === nums[i+1]) {
+//       nums.splice(i,1)
+//       i--;
+//     }
+//   }
+//   return nums.length
+// };
+// removeDuplicates([0,0,0,1,2,3])
+// removeDuplicates([0,0,1,1,1,2,2,3,3,4])
+
+// 5. 最长回文子串
+ var longestPalindrome = function(s) {
+  let result = s[0];
+  let ss = []
+  if(s.length === 1) return s;
+  // 循环s中的每个子串，如果子串出现的次数大于1，说明有可能组合成回文串
+  for(let i = 0; i < s.length; i++) {
+    let item = s.charAt(i);
+    // 重复子串判断
+    if(s.split(item).length > 2) {
+      let startIdx = s.indexOf(item);
+      let endIdx = s.lastIndexOf(item);
+      // console.log(startIdx, endIdx);
+      let section = s.slice(startIdx, endIdx+1);
+      let revese_section = section.split('').reverse().join('');
+      console.log(section, revese_section)
+      if(revese_section === section) {
+        ss.push(section)
+      }
+      if(revese_section === section && result.length < section.length) {
+        result = section;
+      }
     }
   }
-  return nums.length
+  console.log(result)
+  console.log(ss)
+  return result;
 };
-removeDuplicates([0,0,0,1,2,3])
-removeDuplicates([0,0,1,1,1,2,2,3,3,4])
-
+// longestPalindrome('babad')
+// longestPalindrome('ac')
+longestPalindrome('aacabdkacaa')
