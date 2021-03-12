@@ -594,38 +594,49 @@
 // removeDuplicates([0,0,0,1,2,3])
 // removeDuplicates([0,0,1,1,1,2,2,3,3,4])
 
-// 5. 最长回文子串  ❌
-//  var longestPalindrome = function(s) {
-//   let result = s[0];
-//   let ss = []
-//   if(s.length === 1) return s;
-//   // 循环s中的每个子串，如果子串出现的次数大于1，说明有可能组合成回文串
-//   for(let i = 0; i < s.length; i++) {
-//     let item = s.charAt(i);
-//     // 重复子串判断
-//     if(s.split(item).length > 2) {
-//       let startIdx = s.indexOf(item);
-//       let endIdx = s.lastIndexOf(item);
-//       // console.log(startIdx, endIdx);
-//       let section = s.slice(startIdx, endIdx+1);
-//       let revese_section = section.split('').reverse().join('');
-//       console.log(section, revese_section)
-//       if(revese_section === section) {
-//         ss.push(section)
-//       }
-//       if(revese_section === section && result.length < section.length) {
-//         result = section;
-//       }
-//     }
-//   }
-//   console.log(result)
-//   console.log(ss)
-//   return result;
-// };
-// // longestPalindrome('babad')
-// // longestPalindrome('ac')
-// longestPalindrome('aacabdkacaa')
-
+// 5. 最长回文子串, 中心扩散法   ✅
+var longestPalindrome = function(s) {
+  let mark = '';
+  if(s.length === 1 || s.length === 0 || s.split('').reverse().join('') === s){return s}
+  if(s.length === 2){return s[0] === s[1] ? s : s[0]}
+  let len = s.length;
+  for(let i = 0; i < len; i++) {
+    // 满足s[i] === s[i+1]为双中心，否则为单中心
+    if(s[i] === s[i+1]) {
+      let left = i-1;
+      let right = s[i] === s[i+1] ? i+2 : i+1;
+      while(left >= 0 && right < len && s[left] === s[right]) {
+        left--;
+        right++;
+      }
+      // left+1是因为left最小值为0，由于while允许0进入，所以left最小值是-1，需要加1再截取
+      let result = s.slice(left+1, right);
+      if(mark.length < result.length) {
+        mark = result;
+      }
+    }
+    let left = i-1;
+    let right = i+1;
+    while(left >= 0 && right < len && s[left] === s[right]) {
+      left--;
+      right++;
+    }
+    let result = s.slice(left+1, right);
+    if(mark.length < result.length) {
+      mark = result;
+    }
+  }
+  return mark;
+};
+// longestPalindrome('babad')
+// longestPalindrome('cbbd')
+// longestPalindrome('ccc')
+longestPalindrome('sooosg')
+// longestPalindrome("cbbd")
+// longestPalindrome("adam")
+// longestPalindrome('babad')
+// console.log(longestPalindrome('babad'))
+// longestPalindrome("azwdzwmwcqzgcobeeiphemqbjtxzwkhiqpbrprocbppbxrnsxnwgikiaqutwpftbiinlnpyqstkiqzbggcsdzzjbrkfmhgtnbujzszxsycmvipjtktpebaafycngqasbbhxaeawwmkjcziybxowkaibqnndcjbsoehtamhspnidjylyisiaewmypfyiqtwlmejkpzlieolfdjnxntonnzfgcqlcfpoxcwqctalwrgwhvqvtrpwemxhirpgizjffqgntsmvzldpjfijdncexbwtxnmbnoykxshkqbounzrewkpqjxocvaufnhunsmsazgibxedtopnccriwcfzeomsrrangufkjfzipkmwfbmkarnyyrgdsooosgqlkzvorrrsaveuoxjeajvbdpgxlcrtqomliphnlehgrzgwujogxteyulphhuhwyoyvcxqatfkboahfqhjgujcaapoyqtsdqfwnijlkknuralezqmcryvkankszmzpgqutojoyzsnyfwsyeqqzrlhzbc")
 
 // let arr = [
 //   {
