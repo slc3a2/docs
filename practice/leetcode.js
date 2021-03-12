@@ -594,34 +594,74 @@
 // removeDuplicates([0,0,0,1,2,3])
 // removeDuplicates([0,0,1,1,1,2,2,3,3,4])
 
-// 5. 最长回文子串
- var longestPalindrome = function(s) {
-  let result = s[0];
-  let ss = []
-  if(s.length === 1) return s;
-  // 循环s中的每个子串，如果子串出现的次数大于1，说明有可能组合成回文串
-  for(let i = 0; i < s.length; i++) {
-    let item = s.charAt(i);
-    // 重复子串判断
-    if(s.split(item).length > 2) {
-      let startIdx = s.indexOf(item);
-      let endIdx = s.lastIndexOf(item);
-      // console.log(startIdx, endIdx);
-      let section = s.slice(startIdx, endIdx+1);
-      let revese_section = section.split('').reverse().join('');
-      console.log(section, revese_section)
-      if(revese_section === section) {
-        ss.push(section)
-      }
-      if(revese_section === section && result.length < section.length) {
-        result = section;
-      }
-    }
-  }
-  console.log(result)
-  console.log(ss)
-  return result;
-};
-// longestPalindrome('babad')
-// longestPalindrome('ac')
-longestPalindrome('aacabdkacaa')
+// 5. 最长回文子串  ❌
+//  var longestPalindrome = function(s) {
+//   let result = s[0];
+//   let ss = []
+//   if(s.length === 1) return s;
+//   // 循环s中的每个子串，如果子串出现的次数大于1，说明有可能组合成回文串
+//   for(let i = 0; i < s.length; i++) {
+//     let item = s.charAt(i);
+//     // 重复子串判断
+//     if(s.split(item).length > 2) {
+//       let startIdx = s.indexOf(item);
+//       let endIdx = s.lastIndexOf(item);
+//       // console.log(startIdx, endIdx);
+//       let section = s.slice(startIdx, endIdx+1);
+//       let revese_section = section.split('').reverse().join('');
+//       console.log(section, revese_section)
+//       if(revese_section === section) {
+//         ss.push(section)
+//       }
+//       if(revese_section === section && result.length < section.length) {
+//         result = section;
+//       }
+//     }
+//   }
+//   console.log(result)
+//   console.log(ss)
+//   return result;
+// };
+// // longestPalindrome('babad')
+// // longestPalindrome('ac')
+// longestPalindrome('aacabdkacaa')
+
+
+// let arr = [
+//   {
+//     id:1,
+//     no: '131',
+//     count: 0
+//   },
+//   {
+//     id:1,
+//     no: '121',
+//     count: 0
+//   },
+//   {
+//     id:4,
+//     no: '13',
+//     count: 0
+//   }
+// ]
+// console.log('转换前')
+// console.log(arr)
+// function trans(arr) {
+//   for(let i = 0; i < arr.length; i++) {
+//     let curItem = arr[i];
+//     for(let j = i + 1; j < arr.length - 1; j++) {
+//       let diffItem = arr[j];
+//       if(curItem.id === diffItem.id) {
+//         curItem['no'] = curItem['no'].split();
+//         curItem['no'].push(diffItem['no'])
+//         curItem['count']++;
+//         arr[j] = null;
+//       }
+//     }
+//   }
+//   arr = arr.filter((i)=>{return i});
+//   console.log('转换后')
+//   console.log(arr)
+//   return arr;
+// }
+// trans(arr)
