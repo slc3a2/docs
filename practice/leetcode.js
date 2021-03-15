@@ -389,45 +389,48 @@
 // nums1 = [1, 3], nums2 = [2]
 // console.log(findMedianSortedArrays(nums1, nums2))
 
-// 14. 最长公共前缀 ❌
+// 14. 最长公共前缀 ✅
 // var longestCommonPrefix = function(strs) {
 //   let resStr = '';
+//   // 找到最长一项，来循环这项
 //   let maxItem = strs.reduce((a, b)=> {
 //     return a.length > b.length ? a : b;
 //   }, [''])
-//   // console.log(maxItem)
-//   // console.log(maxItem.length)
 //   if(maxItem.length === 1 && maxItem[0] === '') {
+//     console.log('')
 //     return ''
 //   }
-//   console.log(maxItem)
 //   for(let i = 0; i < maxItem.length; i++) {
-//     console.log('------')
 //     let product = maxItem.charAt(i);
 //     let count = 0;
-//     // console.log(product)
 //     for(let j = 0; j < strs.length; j++) {
-//       // console.log(product, strs[j][i])
-//       console.log(strs[j][i], product)
 //       if(strs[j][i] === product) {
 //         count++;
 //       }
 //     }
+//     // strs中每一项都符合要求
 //     if(count === strs.length) {
 //       resStr = resStr + product;
+//       // 如果不连续，则删除最后一项
+//       if(maxItem.indexOf(resStr) === -1) {
+//         resStr = resStr.substring(0, resStr.length -1);
+//       }
+//     }else{
+//       break;
 //     }
 //   }
-//   console.log(resStr)
 //   return resStr;
 // }
-// // longestCommonPrefix(["flower","flow","flight"])
+// longestCommonPrefix(["flower","flow","flight"])
 // // longestCommonPrefix(["dog","racecar","car"])
 // // longestCommonPrefix(["dog","racecar","car"])
-// // longestCommonPrefix([""])
+// longestCommonPrefix([""])
 // // longestCommonPrefix([])
 // // longestCommonPrefix(['a'])
 // // longestCommonPrefix(['',''])
 // longestCommonPrefix(["cir","car"])
+// longestCommonPrefix(["aca","cba"])
+
 
 // 面试题 08.06. 汉诺塔问题 ❌
 // var hanota = function(A, B, C) {
@@ -595,43 +598,43 @@
 // removeDuplicates([0,0,1,1,1,2,2,3,3,4])
 
 // 5. 最长回文子串, 中心扩散法   ✅
-var longestPalindrome = function(s) {
-  let mark = '';
-  if(s.length === 1 || s.length === 0 || s.split('').reverse().join('') === s){return s}
-  if(s.length === 2){return s[0] === s[1] ? s : s[0]}
-  let len = s.length;
-  for(let i = 0; i < len; i++) {
-    // 满足s[i] === s[i+1]为双中心，否则为单中心
-    if(s[i] === s[i+1]) {
-      let left = i-1;
-      let right = s[i] === s[i+1] ? i+2 : i+1;
-      while(left >= 0 && right < len && s[left] === s[right]) {
-        left--;
-        right++;
-      }
-      // left+1是因为left最小值为0，由于while允许0进入，所以left最小值是-1，需要加1再截取
-      let result = s.slice(left+1, right);
-      if(mark.length < result.length) {
-        mark = result;
-      }
-    }
-    let left = i-1;
-    let right = i+1;
-    while(left >= 0 && right < len && s[left] === s[right]) {
-      left--;
-      right++;
-    }
-    let result = s.slice(left+1, right);
-    if(mark.length < result.length) {
-      mark = result;
-    }
-  }
-  return mark;
-};
+// var longestPalindrome = function(s) {
+//   let mark = '';
+//   if(s.length === 1 || s.length === 0 || s.split('').reverse().join('') === s){return s}
+//   if(s.length === 2){return s[0] === s[1] ? s : s[0]}
+//   let len = s.length;
+//   for(let i = 0; i < len; i++) {
+//     // 满足s[i] === s[i+1]为双中心，否则为单中心
+//     if(s[i] === s[i+1]) {
+//       let left = i-1;
+//       let right = s[i] === s[i+1] ? i+2 : i+1;
+//       while(left >= 0 && right < len && s[left] === s[right]) {
+//         left--;
+//         right++;
+//       }
+//       // left+1是因为left最小值为0，由于while允许0进入，所以left最小值是-1，需要加1再截取
+//       let result = s.slice(left+1, right);
+//       if(mark.length < result.length) {
+//         mark = result;
+//       }
+//     }
+//     let left = i-1;
+//     let right = i+1;
+//     while(left >= 0 && right < len && s[left] === s[right]) {
+//       left--;
+//       right++;
+//     }
+//     let result = s.slice(left+1, right);
+//     if(mark.length < result.length) {
+//       mark = result;
+//     }
+//   }
+//   return mark;
+// };
 // longestPalindrome('babad')
 // longestPalindrome('cbbd')
 // longestPalindrome('ccc')
-longestPalindrome('sooosg')
+// longestPalindrome('sooosg')
 // longestPalindrome("cbbd")
 // longestPalindrome("adam")
 // longestPalindrome('babad')
