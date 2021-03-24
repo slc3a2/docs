@@ -156,3 +156,5 @@ class Watcher {
   }
 }
 ```
+
+vue在初始化后，执行`Observe`函数把data利用`Object.defineProperty`属性监听。同时也会使用`Compile`函数循环`dom`，提取vue相关的关键字，v-bind或者v-model，找到这些值，新建一个`Watcher`实例，然后手动get使这些watch放入dep列表中等待订阅。等待调用`Observer`的`set`(input事件，或者手动赋值)，然后通知dep中所有`Watcher`调用`update`方法。
