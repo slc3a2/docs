@@ -343,35 +343,39 @@
 // thousandSeparator(12345678)
 
 // 13. 罗马数字转整数 ✅
-// var romanToInt = function(s) {
-//   let map = new Map(Object.entries({
-//     'I': 1,
-//     'V': 5,
-//     'X': 10,
-//     'L': 50,
-//     'C': 100,
-//     'D': 500,
-//     'M': 1000,
-//     'IV': 4,
-//     'IX': 9,
-//     'XL': 40,
-//     'XC': 90,
-//     'CD': 400,
-//     'CM': 900
-//   }))
-//   let count = 0;
-//   for(let i = 0; i < s.length; i++) {
-//     if(map.has(s[i] + s[i+1])) {
-//       count += map.get(s[i] + s[i+1])
-//       i++;
-//     } else {
-//       count += map.get(s[i])
+// var romanToInt = function(num) {
+//   let o = [
+//     [1000, 'M'],
+//     [900, 'CM'],
+//     [500, 'D'],
+//     [400, 'CD'],
+//     [100, 'C'],
+//     [90, 'XC'],
+//     [50, 'L'],
+//     [40, 'XL'],
+//     [10, 'X'],
+//     [9, 'IX'],
+//     [5, 'V'],
+//     [4, 'IV'],
+//     [1, 'I']
+//   ];
+//   let map = new Map(o);
+//   let res = ''
+//   while(num !== 0) {
+//     for(let i of map) {
+//       if(num >= i[0]) {
+//         num -= i[0];
+//         res += i[1];
+//         break;
+//       }
 //     }
 //   }
-//   return count;
+//   return res
 // }
 
-// romanToInt('MCMXCIV')
+// romanToInt(1994)
+// romanToInt(3)
+// romanToInt(20)
 
 // 4. 寻找两个正序数组的中位数 ❌ leetcode[1,3] [2]用例和本地结果不同
 // var findMedianSortedArrays = function(nums1, nums2) {
@@ -680,12 +684,12 @@
 // }
 // trans(arr)
 // 69. x 的平方根 ✅
-var mySqrt = function(x) {
-  let t = 0;
-  while(!(Math.pow(t, 2) <= x && Math.pow(t+1, 2) > x)) {
-    t++;
-  }
-  return t
+// var mySqrt = function(x) {
+//   let t = 0;
+//   while(!(Math.pow(t, 2) <= x && Math.pow(t+1, 2) > x)) {
+//     t++;
+//   }
+//   return t
   // if(x === 1 || x === 0) {
   //   return x;
   // }
@@ -728,5 +732,5 @@ var mySqrt = function(x) {
   //   }else{
   //     return Math.pow(t-1, 2) <= x && Math.pow(t+1, 2) > x;
   //   }
-};
-mySqrt(8)
+// };
+// mySqrt(8)
