@@ -706,32 +706,32 @@
   // return t;
 
   // int最大值2147483647， 开方后，最大也就是46340
-  // let t = 46340;
-  // if(t * t >= x) {
-  //   t = parseInt(t / 2);
-  // }else{
-  //   t = parseInt(t / 2) + parseInt((t - t / 2) / 2)
-  // }
-  // console.log(t)
-  // console.log((t - 1) * (t - 1) <= x)
-  // console.log((t + 1) * (t + 1) >= x)
-  // let res = 
-  // while(!check(t) && t !== 0) {
-  //   if((t/2) * (t/2) > x) {
-  //     t = parseInt(t / 2);
-  //   }else{
-  //     t = parseInt(t / 4 * 3);
-  //   }
-  //   console.log(t)
-  // }
-  // console.log(t)
-  // console.log(check(2))
-  // function check(t) {
-  //   if(Math.pow(t, 2) === x) {
-  //     return true;
-  //   }else{
-  //     return Math.pow(t-1, 2) <= x && Math.pow(t+1, 2) > x;
-  //   }
+//   let t = 46340;
+//   if(t * t >= x) {
+//     t = parseInt(t / 2);
+//   }else{
+//     t = parseInt(t / 2) + parseInt((t - t / 2) / 2)
+//   }
+//   console.log(t)
+//   console.log((t - 1) * (t - 1) <= x)
+//   console.log((t + 1) * (t + 1) >= x)
+//   let res = 
+//   while(!check(t) && t !== 0) {
+//     if((t/2) * (t/2) > x) {
+//       t = parseInt(t / 2);
+//     }else{
+//       t = parseInt(t / 4 * 3);
+//     }
+//     console.log(t)
+//   }
+//   console.log(t)
+//   console.log(check(2))
+//   function check(t) {
+//     if(Math.pow(t, 2) === x) {
+//       return true;
+//     }else{
+//       return Math.pow(t-1, 2) <= x && Math.pow(t+1, 2) > x;
+//     }
 // };
 // mySqrt(8)
 
@@ -777,3 +777,28 @@
 //   return res;
 // }
 // toChineseNumber(100900911)
+
+
+// 取硬币
+function getCoin(coinArr, amount, res = []){
+  for(let i = coinArr.length - 1; i >= 0; i--) {
+    let item = coinArr[i];
+    // console.log(amount, item)
+    if(amount - item >= 0) {
+      res.push(item)
+      getCoin(coinArr, amount - item, res)
+      break;
+    }
+  }
+  if(amount === 0) {
+    console.log(res)
+    return res
+  }else{
+    console.log('无法整除')
+    return false
+  }
+  console.log(res)
+  // return res
+}
+getCoin([1,2,5], 11) // 5 5 1
+getCoin([1,2,5], 36) // 5 5 5 5 5 5 5 1
