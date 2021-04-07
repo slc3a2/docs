@@ -490,39 +490,68 @@
 // trap([1,2,3,4,5,2,3,1,2,3,4,5,5])
 // trap([0,1,0,2,1,0,1,3,2,1,2,1])
 
-// let l1 = {
-//   val: 2,
-//   next:  {
-//     val: 4,
-//     next: {
-//       val: 3,
-//       next: null
-//     }
-//   }
-// }
+let l1 = {
+  val: 2,
+  next:  {
+    val: 4,
+    next: {
+      val: 3,
+      next: null
+    }
+  }
+}
 
-// let l2 = {
-//   val: 5,
-//   next:  {
-//     val: 6,
-//     next: {
-//       val: 4,
-//       next: null
-//     }
-//   }
-// }
-// // 2. 两数相加 ❌
-// var addTwoNumbers = function(l1, l2) {
-//   function toLinked(arr) {
-//     let temp = {};
-//     for(let i = 0; i < arr.length; i++) {
-//       if(temp.next === null) {
-//         temp = temp.next;
-//       };
-//       temp.val
-//     }
-//   }
-// };
+let l2 = {
+  val: 5,
+  next:  {
+    val: 6,
+    next: {
+      val: 4,
+      next: null
+    }
+  }
+}
+// 2. 两数相加 ❌
+var addTwoNumbers = function(l1, l2) {
+  let t1 = ''
+  let t2 = ''
+  while(l1) {
+    t1 += l1.val
+    l1 = l1.next;
+  }
+  while(l2) {
+    t2 += l2.val
+    l2 = l2.next;
+  }
+  let t = Number(t1) + Number(t2);
+  t = String(t).split('');
+  console.log(t)
+  let linked = null
+  for(let i = 0; i < t.length; i++) {
+    node.value = t[i]
+    node.next = null
+    nodes[i].next = nodes[i + 1]
+    linked = new ListNode(s[i]);
+  }
+  // function str2linked(s) {
+  //   s = String(s);
+  //   let nodes = []
+  //   for(let i = 0; i < s.length; i++) {
+  //     let node = {}
+  //     node.value = s[i]
+  //     node.next = null
+  //     nodes.push(node)
+  //   }
+  //   for(let i = 0; i < nodes.length - 1; i++) {
+  //     nodes[i].next = nodes[i + 1]
+  //   }
+  //   return nodes
+  // }
+  
+  // console.log(str2linked(t))
+  // return str2linked(t)
+};
+addTwoNumbers(l1, l2)
 
 //303. 区域和检索 - 数组不可变  ✅
 // var NumArray = function(nums) {
@@ -780,25 +809,25 @@
 
 
 // 取硬币
-function getCoin(coinArr, amount, res = []){
-  for(let i = coinArr.length - 1; i >= 0; i--) {
-    let item = coinArr[i];
-    // console.log(amount, item)
-    if(amount - item >= 0) {
-      res.push(item)
-      getCoin(coinArr, amount - item, res)
-      break;
-    }
-  }
-  if(amount === 0) {
-    console.log(res)
-    return res
-  }else{
-    console.log('无法整除')
-    return false
-  }
-  console.log(res)
-  // return res
-}
-getCoin([1,2,5], 11) // 5 5 1
-getCoin([1,2,5], 36) // 5 5 5 5 5 5 5 1
+// function getCoin(coinArr, amount, res = []){
+//   for(let i = coinArr.length - 1; i >= 0; i--) {
+//     let item = coinArr[i];
+//     // console.log(amount, item)
+//     if(amount - item >= 0) {
+//       res.push(item)
+//       getCoin(coinArr, amount - item, res)
+//       break;
+//     }
+//   }
+//   if(amount === 0) {
+//     console.log(res)
+//     return res
+//   }else{
+//     console.log('无法整除')
+//     return false
+//   }
+//   console.log(res)
+//   // return res
+// }
+// getCoin([1,2,5], 11) // 5 5 1
+// getCoin([1,2,5], 36) // 5 5 5 5 5 5 5 1
