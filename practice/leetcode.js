@@ -490,68 +490,68 @@
 // trap([1,2,3,4,5,2,3,1,2,3,4,5,5])
 // trap([0,1,0,2,1,0,1,3,2,1,2,1])
 
-let l1 = {
-  val: 2,
-  next:  {
-    val: 4,
-    next: {
-      val: 3,
-      next: null
-    }
-  }
-}
+// let l1 = {
+//   val: 2,
+//   next:  {
+//     val: 4,
+//     next: {
+//       val: 3,
+//       next: null
+//     }
+//   }
+// }
 
-let l2 = {
-  val: 5,
-  next:  {
-    val: 6,
-    next: {
-      val: 4,
-      next: null
-    }
-  }
-}
-// 2. 两数相加 ❌
-var addTwoNumbers = function(l1, l2) {
-  let t1 = ''
-  let t2 = ''
-  while(l1) {
-    t1 += l1.val
-    l1 = l1.next;
-  }
-  while(l2) {
-    t2 += l2.val
-    l2 = l2.next;
-  }
-  let t = Number(t1) + Number(t2);
-  t = String(t).split('');
-  console.log(t)
-  let linked = null
-  for(let i = 0; i < t.length; i++) {
-    node.value = t[i]
-    node.next = null
-    nodes[i].next = nodes[i + 1]
-    linked = new ListNode(s[i]);
-  }
-  // function str2linked(s) {
-  //   s = String(s);
-  //   let nodes = []
-  //   for(let i = 0; i < s.length; i++) {
-  //     let node = {}
-  //     node.value = s[i]
-  //     node.next = null
-  //     nodes.push(node)
-  //   }
-  //   for(let i = 0; i < nodes.length - 1; i++) {
-  //     nodes[i].next = nodes[i + 1]
-  //   }
-  //   return nodes
-  // }
+// let l2 = {
+//   val: 5,
+//   next:  {
+//     val: 6,
+//     next: {
+//       val: 4,
+//       next: null
+//     }
+//   }
+// }
+// // 2. 两数相加 ❌
+// var addTwoNumbers = function(l1, l2) {
+//   let t1 = ''
+//   let t2 = ''
+//   while(l1) {
+//     t1 += l1.val
+//     l1 = l1.next;
+//   }
+//   while(l2) {
+//     t2 += l2.val
+//     l2 = l2.next;
+//   }
+//   let t = Number(t1) + Number(t2);
+//   t = String(t).split('');
+//   console.log(t)
+//   let linked = null
+//   for(let i = 0; i < t.length; i++) {
+//     node.value = t[i]
+//     node.next = null
+//     nodes[i].next = nodes[i + 1]
+//     linked = new ListNode(s[i]);
+//   }
+//   // function str2linked(s) {
+//   //   s = String(s);
+//   //   let nodes = []
+//   //   for(let i = 0; i < s.length; i++) {
+//   //     let node = {}
+//   //     node.value = s[i]
+//   //     node.next = null
+//   //     nodes.push(node)
+//   //   }
+//   //   for(let i = 0; i < nodes.length - 1; i++) {
+//   //     nodes[i].next = nodes[i + 1]
+//   //   }
+//   //   return nodes
+//   // }
   
-  // console.log(str2linked(t))
-  // return str2linked(t)
-};
-addTwoNumbers(l1, l2)
+//   // console.log(str2linked(t))
+//   // return str2linked(t)
+// };
+// addTwoNumbers(l1, l2)
 
 //303. 区域和检索 - 数组不可变  ✅
 // var NumArray = function(nums) {
@@ -831,3 +831,18 @@ addTwoNumbers(l1, l2)
 // }
 // getCoin([1,2,5], 11) // 5 5 1
 // getCoin([1,2,5], 36) // 5 5 5 5 5 5 5 1
+
+// 215. 数组中的第K个最大元素
+var findKthLargest = function(nums, k) {
+  for(let i = 0; i < nums.length; i++) {
+    for(let j = 0; j < nums.length - i; j++) {
+      if(nums[j] > nums[j+1]) {
+        [nums[j], nums[j+1]] = [nums[j+1], nums[j]];
+      }
+    }
+  }
+  return 
+  console.log(nums)
+};
+
+findKthLargest([3,2,1,5,6,4])
