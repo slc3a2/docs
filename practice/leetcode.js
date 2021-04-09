@@ -764,7 +764,7 @@
 // };
 // mySqrt(8)
 
-// 数字转中文
+// 数字转中文 
 // function toChineseNumber(n) {
 //   let res = '';
 //   let map1 = {
@@ -808,7 +808,7 @@
 // toChineseNumber(100900911)
 
 
-// 取硬币
+// 取硬币 ✅
 // function getCoin(coinArr, amount, res = []){
 //   for(let i = coinArr.length - 1; i >= 0; i--) {
 //     let item = coinArr[i];
@@ -832,17 +832,89 @@
 // getCoin([1,2,5], 11) // 5 5 1
 // getCoin([1,2,5], 36) // 5 5 5 5 5 5 5 1
 
-// 215. 数组中的第K个最大元素
-var findKthLargest = function(nums, k) {
-  for(let i = 0; i < nums.length; i++) {
-    for(let j = 0; j < nums.length - i; j++) {
-      if(nums[j] > nums[j+1]) {
-        [nums[j], nums[j+1]] = [nums[j+1], nums[j]];
-      }
-    }
-  }
-  return 
-  console.log(nums)
-};
+// 215. 数组中的第K个最大元素 ✅
+// var findKthLargest = function(nums, k) {
+//   for(let i = 0; i < nums.length; i++) {
+//     for(let j = 0; j < nums.length - i; j++) {
+//       if(nums[j] < nums[j+1]) {
+//         [nums[j], nums[j+1]] = [nums[j+1], nums[j]]
+//       }
+//     }
+//   }
+//   return nums[k-1]
+// };
 
-findKthLargest([3,2,1,5,6,4])
+// findKthLargest([3,2,1,5,6,4], 2)
+// findKthLargest([3,2,3,1,2,4,5,5,6], 4)
+
+// function findMissNum(arr) {
+//   let min = Math.min(...arr);
+//   while(arr.indexOf(min) !== -1) {
+//     min++;
+//   }
+//   console.log(min)
+//   return min;
+// }
+
+// findMissNum([1,2,3,4,6,7,8])
+
+// function findMissNum_advance(arr) {
+//   arr = arr.sort((a,b)=>{return a-b});
+//   console.log(arr)
+//   let start = 0;
+//   let end = arr.length - 1;
+//   function exp_start(idx) {
+//     return arr[idx] + 1 === arr[idx+1] ? false :arr[idx+1]
+//   }
+//   function exp_end(idx) {
+//     return arr[idx] - 1 === arr[idx-1] ? false : arr[idx-1]
+//   }
+//   while(start <= end || exp_start(start) || exp_end(end)) {
+//     start++;
+//     end--;
+//   }
+//   console.log(arr[start-1]+1)
+//   return arr[start-1]+1;
+// }
+// findMissNum_advance([1,7,3,8,6,2,4]) // 5
+
+// 200. 岛屿数量 dfs
+// /**
+//  * @param {character[][]} grid
+//  * @return {number}
+//  */
+//  var numIslands = function(grid) {
+//   let count = 0;
+//   let len = grid.length;
+//   for(let i = 0; i < len; i++) {
+//     let len = grid[i].length;
+//     for(let j = 0; j < len; j++) {
+//       if(grid[i][j] === '1') {
+//         count++;
+//         sinking(i, j);
+//       }
+//     }
+//   }
+//   // 沉岛，1 => 0，防止重复统计
+//   function sinking(i, j) {
+//     if(i < 0 || j < 0 || i >= grid.length || j >= grid[i].length || grid[i][j] === '0') {
+//       return;
+//     }
+//     grid[i][j] = '0';
+//     // 遍历四个方向
+//     sinking(i, j + 1) // 右
+//     sinking(i, j - 1) // 左
+//     sinking(i + 1, j) // 下
+//     sinking(i - 1, j) // 上
+//   }
+//   return count;
+// };
+
+// let grid = [
+//   ["1","1","1","1","0"],
+//   ["1","1","0","1","0"],
+//   ["1","1","0","0","0"],
+//   ["0","0","0","0","0"]
+// ]
+
+// numIslands(grid);
