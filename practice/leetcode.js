@@ -986,51 +986,66 @@
 // console.log(rob([2,7,9,3,1]))
 
 // 32. 最长有效括号
-var longestValidParentheses = function(s) {
-  let len = s.length
-  let dp = new Array(len).fill(0)
-  dp[1] = s.charAt(0) + s.charAt(1) === '()' ? 2 : 0
-  // console.log(dp[1])
-  if(len === 0) {
-    return 0
-  }else if(len === 1) {
-    return 0
-  }else if(len === 2) {
-    return s.charAt(0) + s.charAt(1) === '()' ? 2 : 0
-  }
-  // 本来i应该从2开始，可是这题判断括号要依赖两项
-  for(let i = 1; i < len; i++) {
-    // if(dp[i-1] === 2) {
-    //   console.log(111)
-    //   continue;
-    // }
-    // console.log('循环')
-    // console.log(s, i)
-    // console.log(s.charAt(i-1))
-    // console.log(s.charAt(i))
-    // console.log(s.charAt(i-1) + s.charAt(i))  
-    let t = s.charAt(i) + s.charAt(i+1) === '()' ? 2 : 0
-    if(t === 2) {
-      i++;
-    }
-    // console.log(t, dp[i], dp[i])
-    dp[i] = Math.max(t+dp[i], dp[i]);
-    // console.log(dp[i], dp[i-2])
-    if(dp[i] === 2 && dp[i-2] === 2) {
-      // console.log(111)
-      dp[i-1] = 4
-    }
-  }
-  console.log(dp)
-  return Math.max(...dp);
-};
-// longestValidParentheses("(()")
-// console.log(longestValidParentheses("(()"))
-console.log(longestValidParentheses(")()())"))
-// console.log(longestValidParentheses(""))
-console.log(longestValidParentheses("()()"))
-console.log(longestValidParentheses("()(())"))
+// var longestValidParentheses = function(s) {
+//   let len = s.length
+//   let dp = new Array(len).fill(0)
+//   dp[1] = s.charAt(0) + s.charAt(1) === '()' ? 2 : 0
+//   // console.log(dp[1])
+//   if(len === 0) {
+//     return 0
+//   }else if(len === 1) {
+//     return 0
+//   }else if(len === 2) {
+//     return s.charAt(0) + s.charAt(1) === '()' ? 2 : 0
+//   }
+//   // 本来i应该从2开始，可是这题判断括号要依赖两项
+//   for(let i = 1; i < len; i++) {
+//     // if(dp[i-1] === 2) {
+//     //   console.log(111)
+//     //   continue;
+//     // }
+//     // console.log('循环')
+//     // console.log(s, i)
+//     // console.log(s.charAt(i-1))
+//     // console.log(s.charAt(i))
+//     // console.log(s.charAt(i-1) + s.charAt(i))  
+//     let t = s.charAt(i) + s.charAt(i+1) === '()' ? 2 : 0
+//     if(t === 2) {
+//       i++;
+//     }
+//     // console.log(t, dp[i], dp[i])
+//     dp[i] = Math.max(t+dp[i], dp[i]);
+//     // console.log(dp[i], dp[i-2])
+//     if(dp[i] === 2 && dp[i-2] === 2) {
+//       // console.log(111)
+//       dp[i-1] = 4
+//     }
+//   }
+//   console.log(dp)
+//   return Math.max(...dp);
+// };
+// // longestValidParentheses("(()")
+// // console.log(longestValidParentheses("(()"))
+// console.log(longestValidParentheses(")()())"))
+// // console.log(longestValidParentheses(""))
+// console.log(longestValidParentheses("()()"))
+// console.log(longestValidParentheses("()(())"))
 
 // longestValidParentheses("")
+
+// 141. 环形链表 ✅
+// var hasCycle = function(head) {
+//   let set = new Set()
+//   let res = false
+//   while(head) {
+//     if(set.has(head)){
+//       res = true
+//       break
+//     }
+//     set.add(head)
+//     head = head.next
+//   }
+//   return res
+// };
 
  
