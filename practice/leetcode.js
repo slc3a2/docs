@@ -878,7 +878,7 @@
 // }
 // findMissNum_advance([1,7,3,8,6,2,4]) // 5
 
-// 200. 岛屿数量 dfs
+// 200. 岛屿数量 dfs  ✅
 // /**
 //  * @param {character[][]} grid
 //  * @return {number}
@@ -918,3 +918,119 @@
 // ]
 
 // numIslands(grid);
+
+// 509. 斐波那契数 ✅
+
+/**
+ * @param {number} n
+ * @return {number}
+ */
+// 常规解
+// var fib = function(n) {
+//   if(n < 2) {return n}
+//   return fib(n-1) + fib(n-2)
+// };
+
+// // dp解
+// var fib = function(n) {
+//   if(n < 2) {return n}
+//   // 初始化结果数组，用于缓存结果
+//   let res = new Array(n+1).fill(0)
+//   // 已知答案
+//   res[0] = 0
+//   res[1] = 1
+//   console.log(res)
+//   // 从第3项开始，计算结果，并存入结果数组
+//   for(let i = 2; i <= n; i++) {
+//     res[i] = res[i-1] + res[i-2]
+//   }
+//   return res[n]
+// };
+
+//  console.log(fib(2))
+//  console.log(fib(3))
+//  console.log(fib(4))
+
+
+// 70. 爬楼梯 得到几种爬楼梯的方法 ✅
+// var climbStairs = function(n) {
+//   if(n <= 2) {return n}
+//   let dp = new Array(n).fill(0)
+//   dp[1] = 1;
+//   dp[2] = 2;
+//   for(let i = 3; i < n+1; i++) {
+//     dp[i] = dp[i - 1] + dp[i - 2];
+//   }
+//   return dp[n]
+// };
+// console.log(climbStairs(5))
+
+// 198. 打家劫舍 ✅
+// var rob = function(nums) {
+//   let len = nums.length
+//   if(len === 1) {
+//     return nums[0]
+//   }else if(len === 2) {
+//     return Math.max(nums[0], nums[1])
+//   }
+//   let dp = new Array(len).fill(0)
+//   dp[0] = nums[0]
+//   dp[1] = Math.max(nums[0], nums[1])
+//   for(let i = 2; i < len; i++) {
+//     dp[i] = Math.max(nums[i] + dp[i-2], dp[i-1])
+//   }
+//   return dp[nums.length-1]
+// };
+// // console.log(rob([0]))
+// console.log(rob([1,2,3,1]))
+// console.log(rob([2,7,9,3,1]))
+
+// 32. 最长有效括号
+var longestValidParentheses = function(s) {
+  let len = s.length
+  let dp = new Array(len).fill(0)
+  dp[1] = s.charAt(0) + s.charAt(1) === '()' ? 2 : 0
+  // console.log(dp[1])
+  if(len === 0) {
+    return 0
+  }else if(len === 1) {
+    return 0
+  }else if(len === 2) {
+    return s.charAt(0) + s.charAt(1) === '()' ? 2 : 0
+  }
+  // 本来i应该从2开始，可是这题判断括号要依赖两项
+  for(let i = 1; i < len; i++) {
+    // if(dp[i-1] === 2) {
+    //   console.log(111)
+    //   continue;
+    // }
+    // console.log('循环')
+    // console.log(s, i)
+    // console.log(s.charAt(i-1))
+    // console.log(s.charAt(i))
+    // console.log(s.charAt(i-1) + s.charAt(i))  
+    let t = s.charAt(i) + s.charAt(i+1) === '()' ? 2 : 0
+    if(t === 2) {
+      i++;
+    }
+    // console.log(t, dp[i], dp[i])
+    dp[i] = Math.max(t+dp[i], dp[i]);
+    // console.log(dp[i], dp[i-2])
+    if(dp[i] === 2 && dp[i-2] === 2) {
+      // console.log(111)
+      dp[i-1] = 4
+    }
+  }
+  console.log(dp)
+  return Math.max(...dp);
+};
+// longestValidParentheses("(()")
+// console.log(longestValidParentheses("(()"))
+console.log(longestValidParentheses(")()())"))
+// console.log(longestValidParentheses(""))
+console.log(longestValidParentheses("()()"))
+console.log(longestValidParentheses("()(())"))
+
+// longestValidParentheses("")
+
+ 
