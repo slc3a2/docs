@@ -500,148 +500,50 @@
 //     }
 //   }
 // }
-let l1 = {
-    val: 1,
-    next:  {
-      val: 0,
-      next: {
-        val: 0,
-        next: {
-          val: 0,
-          next: {
-            val: 0,
-            next: {
-              val: 0,
-              next: {
-                val: 0,
-                next: {
-                  val: 0,
-                  next: {
-                    val: 0,
-                    next: {
-                      val: 0,
-                      next: {
-                        val: 0,
-                        next: {
-                          val: 0,
-                          next: {
-                            val: 0,
-                            next: {
-                              val: 0,
-                              next: {
-                                val: 0,
-                                next: {
-                                  val: 0,
-                                  next: {
-                                    val: 0,
-                                    next: {
-                                      val: 0,
-                                      next: {
-                                        val: 0,
-                                        next: {
-                                          val: 0,
-                                          next: {
-                                            val: 0,
-                                            next: {
-                                              val: 0,
-                                              next: {
-                                                val: 0,
-                                                next: {
-                                                  val: 0,
-                                                  next: {
-                                                    val: 0,
-                                                    next: {
-                                                      val: 0,
-                                                      next: {
-                                                        val: 0,
-                                                        next: {
-                                                          val: 0,
-                                                          next: {
-                                                            val: 0,
-                                                            next: {
-                                                              val: 0,
-                                                              next: {
-                                                                val: 0,
-                                                                next: {
-                                                                  val: 1,
-                                                                  next: null
-                                                                }
-                                                              }
-                                                            }
-                                                          }
-                                                        }
-                                                      }
-                                                    }
-                                                  }
-                                                }
-                                              }
-                                            }
-                                          }
-                                        }
-                                      }
-                                    }
-                                  }
-                                }
-                              }
-                            }
-                          }
-                        }
-                      }
-                    }
-                  }
-                }
-              }
-            }
-          }
-        }
-      }
-    }
-  }
+// let l1 = {
+// }
 
-let l2 = {
-  val: 5,
-  next:  {
-    val: 6,
-    next: {
-      val: 4,
-      next: null
-    }
-  }
-}
-function ListNode(val, next) {
-  this.val = (val===undefined ? 0 : val)
-  this.next = (next===undefined ? null : next)
-}
+// let l2 = {
+//   val: 5,
+//   next:  {
+//     val: 6,
+//     next: {
+//       val: 4,
+//       next: null
+//     }
+//   }
+// }
+// function ListNode(val, next) {
+//   this.val = (val===undefined ? 0 : val)
+//   this.next = (next===undefined ? null : next)
+// }
 
-// 2. 两数相加 ❌
-var addTwoNumbers = function(l1, l2) {
-  let t1 = ''
-  let t2 = ''
-  while(l1) {
-    t1 += l1.val
-    l1 = l1.next;
-  }
-  while(l2) {
-    t2 += l2.val
-    l2 = l2.next;
-  }
-  t2 = t2.split('').reverse().join('')
-  t1 = t1.split('').reverse().join('')
-  console.log(t1, t2)
-  let t = Number(t1) + Number(t2);
-  t = String(t).split('').reverse().join('');
-  console.log(t)
-  let linked = new Array(t.length).fill(0);
-  for(let i = 0; i < t.length; i++) {
-    linked[i] = new ListNode(t[i]);
-  }
-  for(let i = 0; i < linked.length; i++) {
-    linked[i].next = linked[i+1] || null;
-  }
-  console.log(linked)
-  return linked[0]
-};
-console.log(addTwoNumbers(l1, l2))
+// // 2. 两数相加 ❌
+// var addTwoNumbers = function(l1, l2) {
+//   let t1 = ''
+//   let t2 = ''
+//   while(l1) {
+//     t1 += l1.val
+//     l1 = l1.next;
+//   }
+//   while(l2) {
+//     t2 += l2.val
+//     l2 = l2.next;
+//   }
+//   t2 = t2.split('').reverse().join('')
+//   t1 = t1.split('').reverse().join('')
+//   let t = (BigInt(t1) + BigInt(t2)).toString();
+//   t = t.split('').reverse().join('')
+//   let linked = new Array(t.length).fill(0);
+//   for(let i = 0; i < t.length; i++) {
+//     linked[i] = new ListNode(t[i]);
+//   }
+//   for(let i = 0; i < linked.length; i++) {
+//     linked[i].next = linked[i+1] || null;
+//   }
+//   return linked[0]
+// };
+// console.log(addTwoNumbers(l1, l2))
 
 //303. 区域和检索 - 数组不可变  ✅
 // var NumArray = function(nums) {
@@ -1076,52 +978,50 @@ console.log(addTwoNumbers(l1, l2))
 // console.log(rob([2,7,9,3,1]))
 
 // 32. 最长有效括号
-// var longestValidParentheses = function(s) {
-//   let len = s.length
-//   let dp = new Array(len).fill(0)
-//   dp[1] = s.charAt(0) + s.charAt(1) === '()' ? 2 : 0
-//   // console.log(dp[1])
-//   if(len === 0) {
-//     return 0
-//   }else if(len === 1) {
-//     return 0
-//   }else if(len === 2) {
-//     return s.charAt(0) + s.charAt(1) === '()' ? 2 : 0
-//   }
-//   // 本来i应该从2开始，可是这题判断括号要依赖两项
-//   for(let i = 1; i < len; i++) {
-//     // if(dp[i-1] === 2) {
-//     //   console.log(111)
-//     //   continue;
-//     // }
-//     // console.log('循环')
-//     // console.log(s, i)
-//     // console.log(s.charAt(i-1))
-//     // console.log(s.charAt(i))
-//     // console.log(s.charAt(i-1) + s.charAt(i))  
-//     let t = s.charAt(i) + s.charAt(i+1) === '()' ? 2 : 0
-//     if(t === 2) {
-//       i++;
-//     }
-//     // console.log(t, dp[i], dp[i])
-//     dp[i] = Math.max(t+dp[i], dp[i]);
-//     // console.log(dp[i], dp[i-2])
-//     if(dp[i] === 2 && dp[i-2] === 2) {
-//       // console.log(111)
-//       dp[i-1] = 4
-//     }
-//   }
-//   console.log(dp)
-//   return Math.max(...dp);
-// };
-// // longestValidParentheses("(()")
-// // console.log(longestValidParentheses("(()"))
-// console.log(longestValidParentheses(")()())"))
-// // console.log(longestValidParentheses(""))
-// console.log(longestValidParentheses("()()"))
-// console.log(longestValidParentheses("()(())"))
+var longestValidParentheses = function(s) {
+  let len = s.length
+  let dp = new Array(len).fill(0)
+  dp[1] = s.charAt(0) + s.charAt(1) === '()' ? 2 : 0
+  // console.log(dp[1]) 
+  if(len === 0) {
+    return 0
+  }else if(len === 1) {
+    return 0
+  }else if(len === 2) {
+    return s.charAt(0) + s.charAt(1) === '()' ? 2 : 0
+  }
+  // 本来i应该从2开始，可是这题判断括号要依赖两项
+  for(let i = 1; i < len; i++) {
+    // if(dp[i-1] === 2) {
+    //   console.log(111)
+    //   continue;
+    // }
+    // console.log('循环')
+    // console.log(s, i)
+    // console.log(s.charAt(i-1))
+    // console.log(s.charAt(i))
+    // console.log(s.charAt(i-1) + s.charAt(i))  
+    let t = s.charAt(i) + s.charAt(i+1) === '()' ? 2 : 0
+    if(t === 2) {
+      i++;
+    }
+    // console.log(t, dp[i], dp[i])
+    dp[i] = Math.max(t+dp[i], dp[i]);
+    // console.log(dp[i], dp[i-2])
+    if(dp[i] === 2 && dp[i-2] === 2) {
+      // console.log(111)
+      dp[i-1] = 4
+    }
+  }
+  console.log(dp)
+  return Math.max(...dp);
+};
 
-// longestValidParentheses("")
+console.log(longestValidParentheses(")()())"))
+console.log(longestValidParentheses("()()"))
+console.log(longestValidParentheses("()(())"))
+
+longestValidParentheses("")
 
 // 141. 环形链表 ✅
 // var hasCycle = function(head) {
@@ -1138,4 +1038,21 @@ console.log(addTwoNumbers(l1, l2))
 //   return res
 // };
 
- 
+// 118. 杨辉三角  ✅
+// var generate = function(numRows) {
+//   let arr = new Array(numRows);
+//   for(let i = 0; i < numRows; i++) {
+//     if(i === 0) {
+//       arr[0] = [1]
+//       continue;
+//     }
+//     let t = [];
+//     // 通过上一项计算当前项的值
+//     for(let j = 0; j < arr[i-1].length+1; j++) {
+//       t[j] =  (arr[i-1][j-1] || 0) + (arr[i-1][j] || 0);
+//       arr[i] = t
+//     }
+//   }
+//   return arr
+// };
+// generate(5);
