@@ -980,48 +980,67 @@
 // 32. 最长有效括号
 var longestValidParentheses = function(s) {
   let len = s.length
-  let dp = new Array(len).fill(0)
-  dp[1] = s.charAt(0) + s.charAt(1) === '()' ? 2 : 0
-  // console.log(dp[1]) 
-  if(len === 0) {
-    return 0
-  }else if(len === 1) {
+  if(len === 0 || len === 1) {
     return 0
   }else if(len === 2) {
     return s.charAt(0) + s.charAt(1) === '()' ? 2 : 0
   }
+  let dp = new Array(len).fill(0)
+  // dp[0] = 0
+  // dp[1] = s.charAt(0) + s.charAt(1) === '()' ? 2 : 0
+  // console.log(dp)
   // 本来i应该从2开始，可是这题判断括号要依赖两项
-  for(let i = 1; i < len; i++) {
-    // if(dp[i-1] === 2) {
-    //   console.log(111)
-    //   continue;
-    // }
-    // console.log('循环')
-    // console.log(s, i)
-    // console.log(s.charAt(i-1))
-    // console.log(s.charAt(i))
-    // console.log(s.charAt(i-1) + s.charAt(i))  
-    let t = s.charAt(i) + s.charAt(i+1) === '()' ? 2 : 0
-    if(t === 2) {
-      i++;
+  for(let i = 0; i < len; i++) {
+    let t = 0
+    let jump_step = 0
+    // if(s.charAt(i-1) + s.charAt(i+1) === '()') {
+    //   t = 2
+    // }else 
+    if(s.charAt(i) === '(') {
+      // 从i开始向后对比
+      let left_distance = 1
+      let right_distance = 0
+      for(let j = i+1; j < len; j++) {
+        if(s.charAt(j) === '(') {
+          // 匹配 ')(' 情况下截止
+          if(right_distance > 0) {
+            break;
+          }
+          left_distance++
+          // jump_step++
+        }else{
+          right_distance++
+          // jump_step++
+        }
+        jump_step = j;
+      }
+      // console.log(`left:${left_distance}`)
+      // console.log(`right:${right_distance}`)
+      if(right_distance > 0) {
+        if(left_distance >= right_distance) {
+          t = right_distance * 2;
+        } else {
+          t = left_distance * 2;
+        }
+      }
     }
-    // console.log(t, dp[i], dp[i])
-    dp[i] = Math.max(t+dp[i], dp[i]);
-    // console.log(dp[i], dp[i-2])
-    if(dp[i] === 2 && dp[i-2] === 2) {
-      // console.log(111)
-      dp[i-1] = 4
-    }
+    // console.log(`res:${t}`)
+    console.log(t+(dp[jump_step-1] || 0), (dp[jump_step-1] || 0))
+    console.log(Math.max(t+(dp[jump_step-1] || 0), (dp[jump_step-1] || 0)))
+    dp[jump_step] = Math.max(t+(dp[jump_step-1] || 0), (dp[jump_step-1] || 0));
+    i = jump_step;
   }
   console.log(dp)
   return Math.max(...dp);
-};
-
+}
 console.log(longestValidParentheses(")()())"))
-console.log(longestValidParentheses("()()"))
-console.log(longestValidParentheses("()(())"))
+// console.log(longestValidParentheses("()(()"))
+// console.log(longestValidParentheses("(()"))
+// console.log(longestValidParentheses(")()())"))
+// console.log(longestValidParentheses("()()"))
+// console.log(longestValidParentheses("()(())"))
 
-longestValidParentheses("")
+// longestValidParentheses("")
 
 // 141. 环形链表 ✅
 // var hasCycle = function(head) {
