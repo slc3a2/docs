@@ -1128,3 +1128,47 @@ var findMedianSortedArrays = function(nums1, nums2) {
 //   return arr
 // };
 // generate(5);
+
+// 15. 三数之和
+/**
+ * @param {number[]} nums
+ * @return {number[][]}
+ */
+var threeSum = function(nums) {
+  // let t = nums;
+  let arr = []
+  let set = new Set()
+  for(let i = 0; i < nums.length; i++) {
+    for(let j = i+1; j < nums.length; j++) {
+      for(let k = j+1; k < nums.length; k++) {
+        // nums = t;
+        if(nums[i] + nums[j] + nums[k] === 0) {
+          let ts1 = '' + nums[i] + nums[j] + nums[k];
+          let t = new Array(nums[i], nums[j], nums[k]);
+          if(!set.has(ts1)) {
+            arr.push(t)
+            set.add(ts1)
+            ts2 = '' + nums[i] + nums[k] + nums[j];
+            ts3 = '' + nums[j] + nums[i] + nums[k];
+            ts4 = '' + nums[j] + nums[k] + nums[i];
+            ts5 = '' + nums[k] + nums[i] + nums[j];
+            ts6 = '' + nums[k] + nums[j] + nums[i];
+            set.add(ts2)
+            set.add(ts3)
+            set.add(ts4)
+            set.add(ts5)
+            set.add(ts6)
+            // nums[i] = ''
+            // nums[j] = ''
+            // nums[k] = ''
+          }
+        }
+      }
+    }
+  }
+  return arr
+};
+
+// nums = [-1,0,1,2,-1,-4]
+nums = [-1,0,1,2,-1,-4]
+console.log(threeSum(nums))
