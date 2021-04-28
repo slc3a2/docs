@@ -85,3 +85,8 @@ Promise.prototype.race = function(promises) {
    })
 };
 ```
+
+简单来说就是声明promise时，会执行promise第一个函数参数和then的参数函数。
+then：用来把回调传入callback数组中，相当于注册，规定好了reslove时，回调的执行，然后等待resolve调用，resolve就会把callback数组中的函数全部执行
+ - then中return this，用于实现then的链式调用
+ - 如果promise的同步的，则执行resolve的时候callback还没注册
