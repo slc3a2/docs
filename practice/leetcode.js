@@ -1264,7 +1264,6 @@ let addStrings = function(a, b) {
       let i = len
       let t_a = Number(a.charAt(i) || 0)
       let t_b = Number(b.charAt(i) || 0)
-      // console.log(t_a , t_b , temp)
       let count = String(t_a + t_b + temp)
       temp = 0
       if(count.length > 1) {
