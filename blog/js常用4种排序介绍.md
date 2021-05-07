@@ -118,27 +118,27 @@ function insertionSort(arr) {
 #### 完整代码：  
 ```javascript
 function quickSort(arr) { 
-  if (arr.length <= 1) { return arr } // 必须要写这条，数组分解成只有一项的时候，不需要排序了，直接return，否则会报错，堆栈溢出
-  let pointIndex = Math.floor(arr.length / 2); // 在大约中间位置取一下标作为基准点
-  var point = arr.splice(pointIndex, 1)[0];  // 分离pointIndex和原数组arr的关系
-  let left = [];
-  let right = [];
-  for (let i = 0; i < arr.length; i++) {
-    // 循环排序数组，小的放在left中，大的放在right中
-    if (arr[i] < point) {
+  if(arr.length <= 1) {return arr} // 递归边界条件
+  let pointIdx = Math.floor(arr.length / 2) // 在数组中间位置取一个基准点
+  let point = arr.splice(pointIdx, 1)[0] // 通过基准点找到这个值
+  let left = []
+  let right = []
+  for(let i = 0, len = arr.length; i < len; i++) {
+    if(arr[i] < point) { // 循环数组，小于point的放在left中，大的放在right中
       left.push(arr[i])
-    } else {
-      right.push(arr[i])
+    }else{
+      right.push(arr[i]) 
     }
   }
   // 递归，让每一个left和right继续排序，直到left或right只有一项为止
-  return quickSort(left).concat(point, quickSort(right));
+  return quickSort(left).concat(point, quickSort(right))
 }  
 ```  
 #### 快速排序动画演示：  
 ![quick sort.gif](https://i.loli.net/2020/10/12/DzWckAlLmVU9JuN.gif)   
 
 <hr>    
+另外说一下，`sort`排序函数原理：如果数组长度`小于10`，使用插入排序，否则使用快速排序。如其名，快速排序的性能还是很好的
 
 本文动画参考：[掘金](https://juejin.im/post/6844903444365443080)    
 本文例子查看：[GitHub](https://github.com/codedance98/docs/tree/main/javascript_sort)
