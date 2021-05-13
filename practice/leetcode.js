@@ -1165,116 +1165,208 @@ var findMedianSortedArrays = function(nums1, nums2) {
 //   }
 //   return arr
 // };
-var threeSum = function(nums) {
-  nums = nums.sort((a, b)=> {return a - b})
-  let set = new Set()
-  let res = []
-  for(let i = 0, len = nums.length; i < len; i++) {
-    let l = 0
-    let r = len - 1
-    while(l <= r) {
-      if(nums[l] + nums[r] === -nums[i]) {
-        let ts1 = '' + nums[l] + nums[r] + nums[i]
-        let ts2 = '' + nums[l] + nums[i] + nums[r]
-        let ts3 = '' + nums[r] + nums[l] + nums[i]
-        let ts4 = '' + nums[r] + nums[i] + nums[l]
-        let ts5 = '' + nums[i] + nums[l] + nums[r]
-        let ts6 = '' + nums[i] + nums[r] + nums[l]
-        if(!set.has(ts1)) {
-          set.add(ts1)
-          set.add(ts2)
-          set.add(ts3)
-          set.add(ts4)
-          set.add(ts5)
-          set.add(ts6)
-          res.push(new Array(nums[l], nums[r], nums[i]))
-        }
-      }
-      l++
-      r--
-    }
-  }
-  return res
-}
-nums = [-1,0,1,2,-1,-4]
-nums = [-10,-7,-3,-9,-8,-9,-5,6,0,6,4,-15,-12,3,-12,-10,-5,-5,2,-4,13,8,-9,6,-11,11,3,-13,-3,14,-9,2,14,-5,8,-9,-7,-12,5,1,2,-6,1,5,4,-4,3,7,-2,12,10,-3,6,-14,-12,10,12,7,12,-14,-2,11,4,-10,13,-11,-4,-8,-15,-14,8,-6,-12,-14,6,7,-3,-14,-1,11,14,-6,-15,5,-13,-12,0,14,2,-11,-14,8,-15,-3,13,14,-7,-14,13,-15,10,-2,-14,13]
-console.log(threeSum(nums).length)
-var threeSum2 = function(nums) {
-  const result = []
-  nums.sort((a,b) => a-b)
-  for(let i = 0;i<nums.length;i++) {
-      // 跳过重复数字
-      if (i && nums[i] === nums[i-1]) continue
-      let left = i+1
-      let right = nums.length-1
-      while(left < right) {
-          const sum = nums[i] + nums[left] + nums[right]
-          if (sum > 0) {
-              right--
-          } else if(sum < 0) {
-              left++
-          } else {
-              result.push([nums[i], nums[left++], nums[right--]])
-              // 跳过重复数字
-              while(nums[left] === nums[left-1]) {
-                  left++
-              }
-              // 跳过重复数字
-              while(nums[right] ===  nums[right+1]) {
-                  right--
-              }
-          }
-      }
-  }
-  return result
-};
-let r1 = threeSum(nums)
-let r2 = threeSum2(nums)
-console.log(r1.length)
-console.log('------')
-console.log(r2.length)
-for(let i = 0, len = r1.length; i < len; i++) {
-  r1[i] = r1[i].join('')
-}
-for(let i = 0, len = r2.length; i < len; i++) {
-  r2[i] = r2[i].join('')
-}
-// console.log(r1, r2)–
-for(let i = 0, len = r2.length; i < len; i++) {
-  if(r1.indexOf(r2[i]) === -1) {
-    // console.log(r2[i])
-  }
-}
+// var threeSum = function(nums) {
+//   nums = nums.sort((a, b)=> {return a - b})
+//   let set = new Set()
+//   let res = []
+//   for(let i = 0, len = nums.length; i < len; i++) {
+//     let l = 0
+//     let r = len - 1
+//     while(l <= r) {
+//       if(nums[l] + nums[r] === -nums[i]) {
+//         let ts1 = '' + nums[l] + nums[r] + nums[i]
+//         let ts2 = '' + nums[l] + nums[i] + nums[r]
+//         let ts3 = '' + nums[r] + nums[l] + nums[i]
+//         let ts4 = '' + nums[r] + nums[i] + nums[l]
+//         let ts5 = '' + nums[i] + nums[l] + nums[r]
+//         let ts6 = '' + nums[i] + nums[r] + nums[l]
+//         if(!set.has(ts1)) {
+//           set.add(ts1)
+//           set.add(ts2)
+//           set.add(ts3)
+//           set.add(ts4)
+//           set.add(ts5)
+//           set.add(ts6)
+//           res.push(new Array(nums[l], nums[r], nums[i]))
+//         }
+//       }
+//       l++
+//       r--
+//     }
+//   }
+//   return res
+// }
+// nums = [-1,0,1,2,-1,-4]
+// nums = [-10,-7,-3,-9,-8,-9,-5,6,0,6,4,-15,-12,3,-12,-10,-5,-5,2,-4,13,8,-9,6,-11,11,3,-13,-3,14,-9,2,14,-5,8,-9,-7,-12,5,1,2,-6,1,5,4,-4,3,7,-2,12,10,-3,6,-14,-12,10,12,7,12,-14,-2,11,4,-10,13,-11,-4,-8,-15,-14,8,-6,-12,-14,6,7,-3,-14,-1,11,14,-6,-15,5,-13,-12,0,14,2,-11,-14,8,-15,-3,13,14,-7,-14,13,-15,10,-2,-14,13]
+// console.log(threeSum(nums).length)
+// var threeSum2 = function(nums) {
+//   const result = []
+//   nums.sort((a,b) => a-b)
+//   for(let i = 0;i<nums.length;i++) {
+//       // 跳过重复数字
+//       if (i && nums[i] === nums[i-1]) continue
+//       let left = i+1
+//       let right = nums.length-1
+//       while(left < right) {
+//           const sum = nums[i] + nums[left] + nums[right]
+//           if (sum > 0) {
+//               right--
+//           } else if(sum < 0) {
+//               left++
+//           } else {
+//               result.push([nums[i], nums[left++], nums[right--]])
+//               // 跳过重复数字
+//               while(nums[left] === nums[left-1]) {
+//                   left++
+//               }
+//               // 跳过重复数字
+//               while(nums[right] ===  nums[right+1]) {
+//                   right--
+//               }
+//           }
+//       }
+//   }
+//   return result
+// };
+// let r1 = threeSum(nums)
+// let r2 = threeSum2(nums)
+// console.log(r1.length)
+// console.log('------')
+// console.log(r2.length)
+// for(let i = 0, len = r1.length; i < len; i++) {
+//   r1[i] = r1[i].join('')
+// }
+// for(let i = 0, len = r2.length; i < len; i++) {
+//   r2[i] = r2[i].join('')
+// }
+// // console.log(r1, r2)–
+// for(let i = 0, len = r2.length; i < len; i++) {
+//   if(r1.indexOf(r2[i]) === -1) {
+//     // console.log(r2[i])
+//   }
+// }
 // 415. 字符串相加
-let addStrings = function(a, b) {
-  let res = []
-  let temp = 0
-  if(a.length > b.length) {
-    let t = a.length - b.length
-    for(let i = 0; i < t; i++) {
-      b = '0' + b
-    }
-  } else {
-    let t = b.length - a.length
-    for(let i = 0; i < t; i++) {
-      a = '0' + a
-    }
-  }
-  for(let len = Math.max(a.length, b.length) - 1; len >= 0; len--) {
-      let i = len
-      let t_a = Number(a.charAt(i) || 0)
-      let t_b = Number(b.charAt(i) || 0)
-      let count = String(t_a + t_b + temp)
-      temp = 0
-      if(count.length > 1) {
-        temp = Number(count.charAt(0))
-        res.push(count.charAt(1))
-      } else {
-        res.push(count)
+// let addStrings = function(a, b) {
+//   let res = []
+//   let temp = 0
+//   if(a.length > b.length) {
+//     let t = a.length - b.length
+//     for(let i = 0; i < t; i++) {
+//       b = '0' + b
+//     }
+//   } else {
+//     let t = b.length - a.length
+//     for(let i = 0; i < t; i++) {
+//       a = '0' + a
+//     }
+//   }
+//   for(let len = Math.max(a.length, b.length) - 1; len >= 0; len--) {
+//       let i = len
+//       let t_a = Number(a.charAt(i) || 0)
+//       let t_b = Number(b.charAt(i) || 0)
+//       let count = String(t_a + t_b + temp)
+//       temp = 0
+//       if(count.length > 1) {
+//         temp = Number(count.charAt(0))
+//         res.push(count.charAt(1))
+//       } else {
+//         res.push(count)
+//       }
+//   }
+//   if(temp !== 0) {
+//     res.push(temp)
+//   }
+//   return res.reverse().join('')
+// }
+// 912. 排序数组
+// var sortArray = function(nums) {
+//   if(nums.length <= 1) {return nums}
+//   let pointIdx = Math.floor(nums.length / 2)
+//   let point = nums.splice(pointIdx, 1)[0]
+//   let left = [], right = []
+//   for(let i = 0, len = nums.length; i < len; i++) {
+//     if(nums[i] < point) {
+//       left.push(nums[i])
+//     }else{
+//       right.push(nums[i])
+//     }
+//   }
+//   return sortArray(left).concat(point, sortArray(right))
+// }
+
+// let arr = [4,3,2,6,7,9,1]
+// console.log(sortArray(arr))
+
+// 53. 最大子序和
+var maxSubArray = function(nums) {
+  let dp = new Array(nums.length).fill(0)
+  dp[0] = nums[0]
+  for(let i = 1, len = nums.length; i < len; i++) { 
+    // dp[i] = Math.max(dp[i-1] + nums[i], dp[i])
+    // dp[i] = dp[i-1] + nums[i] > dp[i-1] ? dp[i-1] + nums[i] : Math.max(dp[i-1], dp[i])
+    // console.log(dp[i-1] + nums[i], dp[i-1])
+    // if(nums[i] > dp[i-1]) {
+    //   dp[i] = nums[i]
+    // }else{
+    //   dp[i] = dp[i-1] + nums[i]
+    // }
+    if((dp[i-1] + nums[i]) > dp[i-1]) {
+      if(nums[i] > dp[i-1]) {
+        dp[i] = nums[i]
+      }else{
+        dp[i] = dp[i-1] + nums[i]
       }
+    } else {
+      if(nums[i] > dp[i-1]) {
+        dp[i] = nums[i]
+      }else{
+        dp[i] = dp[i-1] + nums[i]
+      }
+      // console.log(dp[i-1], nums[i])
+      // dp[i] = Math.max(dp[i-1], nums[i])
+      // dp[i] = nums[i]
+    }
+    // console.log(Math.max(dp[i-1], dp[i]))
   }
-  if(temp !== 0) {
-    res.push(temp)
-  }
-  return res.reverse().join('')
+  // console.log(dp)
+  [1,2,3]
+  return Math.max(...dp)
 }
+
+console.log(maxSubArray([-2,1,-3,4,-1,2,1,-5,4])) // 6
+console.log(maxSubArray([2,-1,2,1,3,-2,1,2,1,-2])) // 8
+console.log(maxSubArray([-2, 1])) // 1
+console.log(maxSubArray([2, 1])) // 3
+ 
+  // console.log(dp)
+  // let arr = []
+  // for(let i = 0, len = nums.length; i < len; i++) {
+  //   let cur = nums[i]
+  //   let prev = i - 1
+  //   let next = i + 1
+  //   while(prev >= 0) {
+  //     console.log(cur + nums[prev], cur)
+  //     if(cur + nums[prev] > cur) {
+  //       cur = cur + nums[prev]
+  //       console.log(`1 true`)
+  //     }else{
+  //       break
+  //     }
+  //     prev--
+  //   }
+  //   while(next <= len) {
+  //     console.log(cur + nums[next] , cur)
+  //     if(cur + nums[next] > cur) {
+  //       cur = cur + nums[next]
+  //       console.log(`2 true`)
+  //     }else{
+  //       break
+  //     }
+  //     next++
+  //   }
+  //   arr.push(cur)
+  // }
+  // console.log(arr)
+  // return Math.max(...arr)
+
+
