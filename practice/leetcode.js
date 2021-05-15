@@ -1297,76 +1297,29 @@ var findMedianSortedArrays = function(nums1, nums2) {
 // let arr = [4,3,2,6,7,9,1]
 // console.log(sortArray(arr))
 
-// 53. 最大子序和
-var maxSubArray = function(nums) {
-  let dp = new Array(nums.length).fill(0)
-  dp[0] = nums[0]
-  for(let i = 1, len = nums.length; i < len; i++) { 
-    // dp[i] = Math.max(dp[i-1] + nums[i], dp[i])
-    // dp[i] = dp[i-1] + nums[i] > dp[i-1] ? dp[i-1] + nums[i] : Math.max(dp[i-1], dp[i])
-    // console.log(dp[i-1] + nums[i], dp[i-1])
-    // if(nums[i] > dp[i-1]) {
-    //   dp[i] = nums[i]
-    // }else{
-    //   dp[i] = dp[i-1] + nums[i]
-    // }
-    if((dp[i-1] + nums[i]) > dp[i-1]) {
-      if(nums[i] > dp[i-1]) {
-        dp[i] = nums[i]
-      }else{
-        dp[i] = dp[i-1] + nums[i]
-      }
-    } else {
-      if(nums[i] > dp[i-1]) {
-        dp[i] = nums[i]
-      }else{
-        dp[i] = dp[i-1] + nums[i]
-      }
-      // console.log(dp[i-1], nums[i])
-      // dp[i] = Math.max(dp[i-1], nums[i])
-      // dp[i] = nums[i]
-    }
-    // console.log(Math.max(dp[i-1], dp[i]))
-  }
-  // console.log(dp)
-  [1,2,3]
-  return Math.max(...dp)
-}
+// 53. 最大子序和 ✅
+// var maxSubArray = function(nums) {
+//   let dp = new Array(nums.length).fill(0)
+//   dp[0] = nums[0]
+//   for(let i = 1, len = nums.length; i < len; i++) { 
+//     if((dp[i-1] + nums[i]) > dp[i-1]) {
+//       if(nums[i] > dp[i-1]) {
+//         dp[i-1] < 0 ? dp[i] = nums[i] : dp[i] = dp[i-1] + nums[i]
+//       }else{
+//         dp[i] = dp[i-1] + nums[i]
+//       }
+//     } else {
+//       dp[i] = nums[i] > dp[i-1] + nums[i] ? nums[i] : dp[i-1] + nums[i]
+//     }
+//   }
+//   return Math.max(...dp)
+// }
 
-console.log(maxSubArray([-2,1,-3,4,-1,2,1,-5,4])) // 6
-console.log(maxSubArray([2,-1,2,1,3,-2,1,2,1,-2])) // 8
-console.log(maxSubArray([-2, 1])) // 1
-console.log(maxSubArray([2, 1])) // 3
- 
-  // console.log(dp)
-  // let arr = []
-  // for(let i = 0, len = nums.length; i < len; i++) {
-  //   let cur = nums[i]
-  //   let prev = i - 1
-  //   let next = i + 1
-  //   while(prev >= 0) {
-  //     console.log(cur + nums[prev], cur)
-  //     if(cur + nums[prev] > cur) {
-  //       cur = cur + nums[prev]
-  //       console.log(`1 true`)
-  //     }else{
-  //       break
-  //     }
-  //     prev--
-  //   }
-  //   while(next <= len) {
-  //     console.log(cur + nums[next] , cur)
-  //     if(cur + nums[next] > cur) {
-  //       cur = cur + nums[next]
-  //       console.log(`2 true`)
-  //     }else{
-  //       break
-  //     }
-  //     next++
-  //   }
-  //   arr.push(cur)
-  // }
-  // console.log(arr)
-  // return Math.max(...arr)
+// console.log(maxSubArray([-2,1,-3,4,-1,2,1,-5,4])) // 6
+// console.log(maxSubArray([2,-1,2,1,3,-2,1,2,1,-2])) // 8
+// console.log(maxSubArray([-2, 1])) // 1
+// console.log(maxSubArray([-2, -1])) // -1
+// console.log(maxSubArray([2, 1])) // 3
+// console.log(maxSubArray([1, 2])) // 3
 
 
