@@ -137,8 +137,11 @@ function quickSort(arr) {
 #### 快速排序动画演示：  
 ![quick sort.gif](https://i.loli.net/2020/10/12/DzWckAlLmVU9JuN.gif)   
 
-<hr>    
+<hr>     
+
 另外说一下，`sort`排序函数原理：如果数组长度`小于10`，使用插入排序，否则使用快速排序。如其名，快速排序的性能还是很好的
+
+<hr>
 
 本文动画参考：[掘金](https://juejin.im/post/6844903444365443080)    
 本文例子查看：[GitHub](https://github.com/codedance98/docs/tree/main/javascript_sort)
