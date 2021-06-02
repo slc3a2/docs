@@ -1323,7 +1323,7 @@ var findMedianSortedArrays = function(nums1, nums2) {
 // console.log(maxSubArray([1, 2])) // 3
 
 
-// 322. 零钱兑换
+// 322. 零钱兑换 ❌
 // var coinChange = function(coins, amount) {
 //   let dp = new Array(amount).fill(0)
 //   dp[0] = 0
@@ -1347,27 +1347,56 @@ var findMedianSortedArrays = function(nums1, nums2) {
 // };
 // console.log(coinChange([1, 2, 5], 11))
 
-// 56. 合并区间
+// 56. 合并区间 ❌
 /**
  * @param {number[][]} intervals
  * @return {number[][]}
  */
- var merge = function(intervals) {
-  let result = []
-  let len = intervals.length
-  for(let i = 0; i < len; i++) {
-      console.log(intervals[i])
-      let t = intervals[i];
-      // let tartget = intervals[i+1]
-      for(let j = i; j < len; j++) {
-        let target = intervals[j]
+//  var merge = function(intervals) {
+//   let result = []
+//   let len = intervals.length
+//   for(let i = 0; i < len; i++) {
+//       console.log(intervals[i])
+//       let t = intervals[i];
+//       // let tartget = intervals[i+1]
+//       for(let j = i; j < len; j++) {
+//         let target = intervals[j]
         
-        // if(t[0] >= target[0] && t[0] <= target[1]) {
-        //   result.push([target[0], target[1]])
-        // }else{
+//         // if(t[0] >= target[0] && t[0] <= target[1]) {
+//         //   result.push([target[0], target[1]])
+//         // }else{
 
-        // }
-      }
+//         // }
+//       }
+//   }
+// };
+// merge([[1,3],[2,6],[8,10],[15,18]])
+
+// 46. 全排列
+/**
+ * @param {number[]} nums
+ * @return {number[][]}
+*/
+var permute = function(nums) {
+  let result = []
+  function dfs(s, arr) {
+    console.log(arr)
+    if(arr.length === 0) {
+       result.push(s)
+       return
+    }
+    let [head, ...values] = arr
+    for(let i = 0, len = head.length; i < len; i++) {
+      dfs(s + ',' + head[i], values)
+    }
   }
+  dfs('', nums)
+  console.log(result)
 };
-merge([[1,3],[2,6],[8,10],[15,18]])
+let list = [
+  ["热", "冷", "冰"],
+  ["大", "中", "小", "超大"],
+  ["重辣", "微辣"],
+  ["重麻", "微麻"],
+];
+console.log(permute('', list))
