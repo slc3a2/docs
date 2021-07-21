@@ -327,7 +327,7 @@ bubbleSort(a1)
 console.log('-------------')
 console.time('快速排序耗时');
 quickSort(a1)
-// console.log(`快拍结果：${quickSort(a1)}`)
+// console.log(`快排结果：${quickSort(a1)}`)
 console.timeEnd('快速排序耗时');
 console.log('-------------')
 shellSort(a1)
