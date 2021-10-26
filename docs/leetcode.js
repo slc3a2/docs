@@ -1399,7 +1399,7 @@ var findMedianSortedArrays = function(nums1, nums2) {
 //   ["重辣", "微辣"],
 //   ["重麻", "微麻"],
 // ];
-// console.log(permute('', list))
+// console.log(permaddte('', list))
 
 // 21. 合并有序链表 ✅
 /**
