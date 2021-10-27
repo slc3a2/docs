@@ -1,3 +1,3 @@
 # docs
 
-记录着leetcode题解和一些demo
+记录 leetcode 题解和一些 demo
