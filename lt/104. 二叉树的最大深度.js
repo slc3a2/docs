@@ -12,7 +12,7 @@
  */
  var maxDepth = function(root) {
   if(!root) {
-    return 0
+    return []
   }
   let res = 0
   const queue = [root]
