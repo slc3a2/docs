@@ -141,16 +141,39 @@
 // console.log(threeSum([0, 1, 1]));
 // console.log(threeSum([0, 0, 0]));
 
+// /**
+//  * @param {number[]} nums
+//  * @return {number[][]}
+//  */
+// var threeSum = function (arr) {
+//   let t = arr.sort((a, b) => a - b);
+//   const result = [];
+//   for (let i = 0, len = arr.length; i < len; i++) {}
+//   return r;
+// };
+
+// console.log(threeSum([0, 1, 1]));
+// console.log(threeSum([0, 0, 0]));
+
 /**
  * @param {number[]} nums
  * @return {number[][]}
  */
 var threeSum = function (arr) {
-  let t = arr.sort((a, b) => a - b);
-  const result = [];
-  for (let i = 0, len = arr.length; i < len; i++) {}
+  let nums = Array.from([...new Set(arr)]);
+  const r = [];
+  for (let i = 0, len = nums.length; i < len; i++) {
+    const item = nums[i];
+    for (let j = i + 1, len = nums.length; j < len; j++) {
+      const item2 = nums[j];
+      for (let k = j + 1, len = nums.length; k < len; k++) {
+        const item3 = nums[k];
+        console.log(item, item2, item3);
+        const isOk =
+          item !== undefined && item2 !== undefined && item3 !== undefined;
+        if (isOk && item + item2 + item3 === 0) r.push([item, item2, item3]);
+      }
+    }
+  }
   return r;
 };
-
-console.log(threeSum([0, 1, 1]));
-console.log(threeSum([0, 0, 0]));
