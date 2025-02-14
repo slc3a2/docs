@@ -155,25 +155,74 @@
 // console.log(threeSum([0, 1, 1]));
 // console.log(threeSum([0, 0, 0]));
 
+// /**
+//  * @param {number[]} nums
+//  * @return {number[][]}
+//  */
+// var threeSum = function (arr) {
+//   let nums = Array.from([...new Set(arr)]);
+//   const r = [];
+//   for (let i = 0, len = nums.length; i < len; i++) {
+//     const item = nums[i];
+//     for (let j = i + 1, len = nums.length; j < len; j++) {
+//       const item2 = nums[j];
+//       for (let k = j + 1, len = nums.length; k < len; k++) {
+//         const item3 = nums[k];
+//         console.log(item, item2, item3);
+//         const isOk =
+//           item !== undefined && item2 !== undefined && item3 !== undefined;
+//         if (isOk && item + item2 + item3 === 0) r.push([item, item2, item3]);
+//       }
+//     }
+//   }
+//   return r;
+// };
+
 /**
  * @param {number[]} nums
  * @return {number[][]}
  */
-var threeSum = function (arr) {
-  let nums = Array.from([...new Set(arr)]);
-  const r = [];
-  for (let i = 0, len = nums.length; i < len; i++) {
-    const item = nums[i];
-    for (let j = i + 1, len = nums.length; j < len; j++) {
-      const item2 = nums[j];
-      for (let k = j + 1, len = nums.length; k < len; k++) {
-        const item3 = nums[k];
-        console.log(item, item2, item3);
-        const isOk =
-          item !== undefined && item2 !== undefined && item3 !== undefined;
-        if (isOk && item + item2 + item3 === 0) r.push([item, item2, item3]);
+function threeSum(nums) {
+  // 首先对数组进行排序
+  nums.sort((a, b) => a - b);
+  const result = [];
+  const n = nums.length;
+
+  // 遍历数组，固定一个数
+  for (let i = 0; i < n - 2; i++) {
+    // 如果当前数大于 0，由于数组已排序，后面的数也都大于 0，不可能再找到和为 0 的三元组
+    if (nums[i] > 0) break;
+
+    // 跳过重复的数
+    if (i > 0 && nums[i] === nums[i - 1]) continue;
+
+    // 定义左右指针
+    let left = i + 1;
+    let right = n - 1;
+
+    while (left < right) {
+      const sum = nums[i] + nums[left] + nums[right];
+
+      if (sum === 0) {
+        // 找到和为 0 的三元组，添加到结果数组中
+        result.push([nums[i], nums[left], nums[right]]);
+
+        // 跳过重复的数
+        while (left < right && nums[left] === nums[left + 1]) left++;
+        while (left < right && nums[right] === nums[right - 1]) right--;
+
+        // 移动指针
+        left++;
+        right--;
+      } else if (sum < 0) {
+        // 和小于 0，左指针右移
+        left++;
+      } else {
+        // 和大于 0，右指针左移
+        right--;
       }
     }
   }
-  return r;
-};
+
+  return result;
+}
